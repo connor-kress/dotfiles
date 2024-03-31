@@ -29,4 +29,5 @@ eval "$(zoxide init bash)"
 alias cd="z"
 
 alias i="sudo dnf install"
+alias clip="xclip -selection clipboard"
 . "$HOME/.cargo/env"
