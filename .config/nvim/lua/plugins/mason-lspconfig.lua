@@ -3,6 +3,7 @@ local opts = {
     "efm",
     "lua_ls",
     "clangd",
+    "rust_analyzer",
   },
   automatic_installation = true,
 }

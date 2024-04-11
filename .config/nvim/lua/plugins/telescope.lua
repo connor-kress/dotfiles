@@ -8,6 +8,8 @@ return {
         "node%_modules/.*",
         "package%-lock.json",
         "lazy%-lock.json",
+        "CMakeFiles",
+        "build",
         ".git/.*",
         "%.o",
         "%.out",
