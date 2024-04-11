@@ -24,6 +24,10 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
+# PS1="\u@\h:\w$ "
+PS1="\u@\h:\w$ "
+
+eval "$(starship init bash)"
 
 eval "$(zoxide init bash)"
 alias cd="z"
