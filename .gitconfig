@@ -1,0 +1,6 @@
+[user]
+	name = Connor Kress
+	email = con2coool@gmail.com
+
+[credential]
+	helper = cache --timeout=604800
