@@ -22,6 +22,7 @@ opt.signcolumn = "yes"
 opt.cmdheight = 1
 opt.scrolloff = 10
 opt.completeopt = "menuone,noinsert"
+opt.colorcolumn = ""
 
 -- Behaviour
 opt.hidden = true
@@ -38,5 +39,6 @@ opt.iskeyword:append("-")
 opt.mouse:append("a")
 opt.clipboard:append("unnamedplus")
 opt.modifiable = true
+
 -- opt.guicursor = ...
 opt.encoding = "UTF-8"
