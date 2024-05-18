@@ -33,5 +33,10 @@ eval "$(zoxide init bash)"
 alias cd="z"
 
 alias i="sudo dnf install"
+alias ll="ls -lah"
 alias clip="xclip -selection clipboard"
+alias push="cat ~/Storage/token.txt | clip && git push origin master"
+
+export PATH="$PATH:/home/connor/Code/Rust/compiler/target/debug/"
+
 . "$HOME/.cargo/env"
