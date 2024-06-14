@@ -4,6 +4,7 @@ local opts = {
     "lua_ls",
     "clangd",
     "rust_analyzer",
+    "emmet_ls",
   },
   automatic_installation = true,
 }
