@@ -1,12 +1,15 @@
+-- telescope
 local builtin = require('telescope.builtin')
-local set_vim_keymap = vim.keymap.set
-local set_nvim_keymap = vim.api.nvim_set_keymap
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 
-set_vim_keymap('n', '<leader>ff', builtin.find_files, {})
-set_vim_keymap('n', '<leader>fg', builtin.live_grep, {})
+-- oil (file nav)
+vim.keymap.set('n', '-', '<CMD>Oil<CR>')
 
-set_vim_keymap('v', '>', '>gv', {})
-set_vim_keymap('v', '<', '<gv', {})
+-- indentation
+vim.keymap.set('v', '>', '>gv', {})
+vim.keymap.set('v', '<', '<gv', {})
 
-set_nvim_keymap('n', '<C-c>', 'gcc', {})
-set_nvim_keymap('v', '<C-c>', 'gcgv', {})
+-- comments (uses comment.nvim)
+vim.api.nvim_set_keymap('n', '<C-c>', 'gcc', {})
+vim.api.nvim_set_keymap('v', '<C-c>', 'gcgv', {})
