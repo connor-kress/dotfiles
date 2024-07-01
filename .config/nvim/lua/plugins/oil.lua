@@ -1,3 +1,5 @@
+require("util.functions")
+
 return {
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -6,7 +8,7 @@ return {
             view_options = {
                 show_hidden = true,
                 is_always_hidden = function(name, _)
-                    return name == '..'
+                    return Contains({ "..", ".git", "node_modules" }, name)
                 end
             },
         })
