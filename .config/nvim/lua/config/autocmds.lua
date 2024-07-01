@@ -1,9 +1,4 @@
-local function contains(list, x)
-    for _, v in ipairs(list) do
-        if v == x then return true end
-    end
-    return false
-end
+require("util.functions")
 
 local small_indent_fts = {
     "javascript",
@@ -13,12 +8,13 @@ local small_indent_fts = {
     "html",
     "css",
     "json",
+    "jsonc",
 }
 
 vim.api.nvim_create_autocmd("BufEnter", {
     callback = function()
         -- print("filetype = " .. vim.bo.filetype)
-        if contains(small_indent_fts, vim.bo.filetype) then
+        if Contains(small_indent_fts, vim.bo.filetype) then
             vim.opt.tabstop = 2
             vim.opt.shiftwidth = 2
             vim.opt.softtabstop = 2
