@@ -6,7 +6,9 @@ opt.shiftwidth = 4
 opt.softtabstop = 4
 opt.expandtab = true
 opt.smartindent = true
-opt.wrap = false
+opt.wrap = true
+opt.linebreak = true -- wrap on word break
+opt.breakindent = false -- keep indent after wrapping
 
 -- Search
 opt.incsearch = true
@@ -17,12 +19,11 @@ opt.hlsearch = false
 -- Appearance
 opt.number = true
 opt.relativenumber = true
-opt.colorcolumn = "100"
+opt.colorcolumn = ""
 opt.signcolumn = "yes"
 opt.cmdheight = 1
 opt.scrolloff = 10
 opt.completeopt = "menuone,noinsert"
-opt.colorcolumn = ""
 
 -- Behaviour
 opt.hidden = true
