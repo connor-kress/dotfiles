@@ -63,7 +63,7 @@ eval "$(zoxide init zsh)"
 alias cd="z"
 alias i="sudo dnf install"
 alias ll="ls -lah"
-alias treee="tree -a -I node_modules -I .git"
+alias treee="tree -a -I node_modules -I .git -I .next -I target -I cmake-build-debug -I CMakeFiles -I __pycache__"
 alias clip="xclip -selection clipboard"
 alias push="cat ~/Storage/token.txt | clip && git push origin master"
 
