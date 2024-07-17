@@ -91,8 +91,29 @@ local config = function()
     lspconfig.tsserver.setup({
         on_attach = on_attach,
         capabilities = capabilities,
-        filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+        filetypes = { "typescript", "typescriptreact", "typescript.tsx", "css" },
         root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
+    })
+
+    -- css
+    lspconfig.cssls.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        filetypes = { "css", "scss", "less" },
+        root_dir = lspconfig.util.root_pattern("package.json", "tailwind.config.ts", ".git"),
+        settings = {
+            css = { validate = true,
+                lint = { unknownAtRules = "ignore", },
+            },
+        },
+    })
+
+    -- tailwind
+    lspconfig.tailwindcss.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
+        root_dir = lspconfig.util.root_pattern("package.json", "tailwind.config.ts", ".git"),
     })
 
     -- bash
