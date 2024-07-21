@@ -76,10 +76,7 @@ local config = function()
                     diagnosticMode = "workspace",
                     autoImportCompletions = true,
                 },
-            },
-        },
-    })
-
+            }, }, })
     -- json
     lspconfig.jsonls.setup({
         capabilities = capabilities,
