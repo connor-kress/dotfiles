@@ -3,6 +3,10 @@ return {
 	lazy = false,
 	config = function()
 		require("lspsaga").setup({
+            -- remove lightbulb symbols
+            ui = {
+                code_action = "",
+            },
 			-- keybinds for navigation in lspsaga window
 			move_in_saga = { prev = "<C-k>", next = "<C-j>" },
 			-- use enter to open file with finder
