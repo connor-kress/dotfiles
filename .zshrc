@@ -72,6 +72,7 @@ alias clip="xclip -selection clipboard"
 alias push-old="cat ~/Storage/token.txt | xclip -selection clipboard && git push origin master"
 alias push="cat ~/Storage/token.txt | xclip -selection clipboard && git push origin main"
 alias pw="gpg -d ~/Storage/secret.txt.gpg | tr -d '\n' | xclip -selection clipboard"
+alias matlab="~/Software/MATLAB/bin/matlab"
 
 export PATH="$PATH:/home/connor/.local/bin/"
 export PATH="$PATH:/home/connor/Code/Rust/compiler/target/debug/"
