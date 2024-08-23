@@ -50,12 +50,16 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 
-export EDITOR='nvim'
+export EDITOR="/usr/bin/nvim"
+export VISUAL="/usr/bin/nvim"
+export EDITOR="/usr/bin/nvim"
 
 export HISTFILE=~/.zsh_history
 export HISTSIZE=10000
 export SAVEHIST=10000
 setopt SHARE_HISTORY
+
+set -o vi
 
 # eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
@@ -65,9 +69,14 @@ alias i="sudo dnf install"
 alias ll="ls -lah"
 alias treee="tree -a -I node_modules -I .git -I .next -I target -I cmake-build-debug -I CMakeFiles -I __pycache__"
 alias clip="xclip -selection clipboard"
-alias push="cat ~/Storage/token.txt | clip && git push origin master"
+alias push-old="cat ~/Storage/token.txt | xclip -selection clipboard && git push origin master"
+alias push="cat ~/Storage/token.txt | xclip -selection clipboard && git push origin main"
+alias pw="gpg -d ~/Storage/secret.txt.gpg | tr -d '\n' | xclip -selection clipboard"
 
 export PATH="$PATH:/home/connor/.local/bin/"
 export PATH="$PATH:/home/connor/Code/Rust/compiler/target/debug/"
 
 . "$HOME/.cargo/env"
+
+clear
+# fortune | cowsay -f llama
