@@ -69,13 +69,17 @@ alias i="sudo dnf install"
 alias ll="ls -lah"
 alias treee="tree -a -I node_modules -I .git -I .next -I target -I cmake-build-debug -I CMakeFiles -I __pycache__"
 alias clip="xclip -selection clipboard"
-alias push-old="cat ~/Storage/token.txt | xclip -selection clipboard && git push origin master"
-alias push="cat ~/Storage/token.txt | xclip -selection clipboard && git push origin main"
-alias pw="gpg -d ~/Storage/secret.txt.gpg | tr -d '\n' | xclip -selection clipboard"
-alias matlab="~/Software/MATLAB/bin/matlab"
+alias push-old="cat ~/Storage/Secrets/token.txt | xclip -selection clipboard && git push origin master"
+alias push="cat ~/Storage/Secrets/token.txt | xclip -selection clipboard && git push origin main"
+alias pw="gpg -d ~/Storage/Secrets/secret.txt.gpg | tr -d '\n' | xclip -selection clipboard"
+alias phy="python -i /home/connor/Code/Physics/utils.py"
+
+export pdf() {
+    evince "$1" & disown
+}
 
 export PATH="$PATH:/home/connor/.local/bin/"
-export PATH="$PATH:/home/connor/Code/Rust/compiler/target/debug/"
+# export PATH="$PATH:/home/connor/Code/Rust/compiler/target/debug/"
 
 . "$HOME/.cargo/env"
 
