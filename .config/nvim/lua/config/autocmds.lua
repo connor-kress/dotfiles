@@ -15,7 +15,7 @@ local small_indent_fts = {
 
 vim.api.nvim_create_autocmd("BufEnter", {
     callback = function()
-        print("filetype = " .. vim.bo.filetype)
+        -- print("filetype = " .. vim.bo.filetype)
         if Contains(small_indent_fts, vim.bo.filetype) then
             vim.opt.tabstop = 2
             vim.opt.shiftwidth = 2
