@@ -73,6 +73,7 @@ alias push-old="cat ~/Storage/Secrets/token.txt | xclip -selection clipboard && 
 alias push="cat ~/Storage/Secrets/token.txt | xclip -selection clipboard && git push origin main"
 alias pw="gpg -d ~/Storage/Secrets/secret.txt.gpg | tr -d '\n' | xclip -selection clipboard"
 alias phy="python -i /home/connor/Code/Physics/utils.py"
+alias yt="setsid -f mpv --no-terminal"
 
 export pdf() {
     evince "$1" & disown
