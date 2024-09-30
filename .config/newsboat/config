@@ -1,0 +1,6 @@
+bind-key j down
+bind-key k up
+
+browser firefox
+macro , open-in-browser
+macro v set browser "setsid -f mpv --no-terminal"; open-in-browser; set browser firefox
