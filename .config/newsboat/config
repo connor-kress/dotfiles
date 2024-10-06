@@ -1,6 +1,10 @@
+show-keymap-hint no
+show-read-feeds false
+
 bind-key j down
 bind-key k up
+bind-key - quit
 
 browser firefox
 macro , open-in-browser
-macro v set browser "setsid -f mpv --no-terminal"; open-in-browser; set browser firefox
+macro v set browser "setsid -f mpv --no-terminal"; open-in-browser; set browser firefox; toggle-article-read "read"
