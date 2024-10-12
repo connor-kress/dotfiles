@@ -4,7 +4,6 @@ show-read-feeds false
 bind-key j down
 bind-key k up
 bind-key - quit
-
-browser firefox
+browser "setsid -f firefox > /dev/null 2>&1"
 macro , open-in-browser
-macro v set browser "setsid -f mpv --no-terminal"; open-in-browser; set browser firefox; toggle-article-read "read"
+macro v set browser "setsid -f mpv --no-terminal"; open-in-browser; set browser "setsid -f firefox > /dev/null 2>&1"; toggle-article-read "read"
