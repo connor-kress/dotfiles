@@ -61,7 +61,6 @@ setopt SHARE_HISTORY
 
 set -o vi
 
-# eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 alias cd="z"
@@ -69,8 +68,8 @@ alias i="sudo dnf install"
 alias ll="ls -lah"
 alias treee="tree -a -I node_modules -I .git -I .next -I target -I cmake-build-debug -I CMakeFiles -I __pycache__"
 alias clip="xclip -selection clipboard"
-alias push-old="cat ~/Storage/Secrets/token.txt | xclip -selection clipboard && git push origin master"
-alias push="cat ~/Storage/Secrets/token.txt | xclip -selection clipboard && git push origin main"
+alias push-old="pass git/github/token -c && git push origin master"
+alias push="pass git/github/token -c && git push origin main"
 alias pw="gpg -d ~/Storage/Secrets/secret.txt.gpg | tr -d '\n' | xclip -selection clipboard"
 alias phy="python -i /home/connor/Code/Physics/utils.py"
 alias yt="setsid -f mpv --no-terminal"
@@ -80,9 +79,5 @@ export pdf() {
 }
 
 export PATH="$PATH:/home/connor/.local/bin/"
-# export PATH="$PATH:/home/connor/Code/Rust/compiler/target/debug/"
 
 . "$HOME/.cargo/env"
-
-clear
-# fortune | cowsay -f llama
