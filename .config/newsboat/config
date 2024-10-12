@@ -6,4 +6,7 @@ bind-key k up
 bind-key - quit
 browser "setsid -f firefox > /dev/null 2>&1"
 macro , open-in-browser
+
 macro v set browser "setsid -f mpv --no-terminal"; open-in-browser; set browser "setsid -f firefox > /dev/null 2>&1"; toggle-article-read "read"
+
+macro d set browser "setsid -f python ~/.config/newsboat/download.py '%u' > /dev/null 2>&1"; open-in-browser; set browser "setsid -f firefox > /dev/null 2>&1"
