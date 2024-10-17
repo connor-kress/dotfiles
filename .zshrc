@@ -55,8 +55,8 @@ export VISUAL="/usr/bin/nvim"
 export EDITOR="/usr/bin/nvim"
 
 export HISTFILE=~/.zsh_history
-export HISTSIZE=10000
-export SAVEHIST=10000
+export HISTSIZE=100000
+export SAVEHIST=100000
 setopt SHARE_HISTORY
 
 set -o vi
