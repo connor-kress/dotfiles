@@ -1,6 +1,7 @@
 [user]
 	name = Connor Kress
-	email = con2coool@gmail.com
+	email = ckress@ufl.edu
+	signingkey = EB2736E78BD99C62
 
 [credential]
 	helper = cache --timeout=604800
