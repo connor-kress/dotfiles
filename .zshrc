@@ -53,6 +53,7 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
 export EDITOR="/usr/bin/nvim"
+export MANPAGER='nvim +Man!'
 
 export HISTFILE=~/.zsh_history
 export HISTSIZE=100000
@@ -76,6 +77,10 @@ alias yt="setsid -f mpv --no-terminal"
 
 export pdf() {
     evince "$1" & disown
+}
+
+export img() {
+    loupe "$1" & disown
 }
 
 export PATH="$PATH:/home/connor/.local/bin/"
