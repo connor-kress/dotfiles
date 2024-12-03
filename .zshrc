@@ -76,11 +76,11 @@ alias phy="python -i /home/connor/Code/Physics/utils.py"
 alias yt="setsid -f mpv --no-terminal"
 
 export pdf() {
-    evince "$1" & disown
+    (evince "$@" > /dev/null 2>&1 & disown; true) > /dev/null 2>&1
 }
 
 export img() {
-    loupe "$1" & disown
+    (loupe "$@" > /dev/null 2>&1 & disown; true) > /dev/null 2>&1
 }
 
 export PATH="$HOME/.local/bin:$PATH"
