@@ -83,6 +83,6 @@ export img() {
     loupe "$1" & disown
 }
 
-export PATH="$PATH:/home/connor/.local/bin/"
+export PATH="$HOME/.local/bin:$PATH"
 
 . "$HOME/.cargo/env"
