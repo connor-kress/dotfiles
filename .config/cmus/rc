@@ -3,6 +3,6 @@ set lib_sort=-date albumartist album discnumber tracknumber artist title filenam
 # default
 set format_current= %a - %l%! - %n. %t%= %y
 
-# default
 # set format_playlist= %-21%a %3n. %t%= %y %d %{?X!=0?%3X ?    }
 set format_playlist= %-21%a %3n. %-25%t  %l %=  %y %d %{?X!=0?%3X ?    }
+set format_playlist_va= %-21%a %3n. %-25%t  %l %=  %y %d %{?X!=0?%3X ?    }
