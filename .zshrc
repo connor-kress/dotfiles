@@ -67,13 +67,15 @@ eval "$(zoxide init zsh)"
 alias cd="z"
 alias i="sudo dnf install"
 alias ll="ls -lah"
-alias treee="tree -a -I node_modules -I .git -I .next -I target -I cmake-build-debug -I CMakeFiles -I __pycache__"
+alias treee="tree -a -I node_modules -I .git -I .next -I .expo -I target -I cmake-build-debug -I CMakeFiles -I __pycache__ -I .docusaurus"
 alias clip="xclip -selection clipboard"
 alias push-old="pass git/github/token -c && git push origin master"
 alias push="pass git/github/token -c && git push origin main"
 alias pw="gpg -d ~/Storage/Secrets/secret.txt.gpg | tr -d '\n' | xclip -selection clipboard"
 alias phy="python -i /home/connor/Code/Physics/utils.py"
-alias yt="setsid -f mpv --no-terminal"
+alias dl="yt-dlp --format 'bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]'"
+alias rm="trash"
+alias open="xdg-open"
 
 export pdf() {
     (evince "$@" > /dev/null 2>&1 & disown; true) > /dev/null 2>&1
@@ -82,6 +84,8 @@ export pdf() {
 export img() {
     (loupe "$@" > /dev/null 2>&1 & disown; true) > /dev/null 2>&1
 }
+
+source "$HOME/Scripts/Tmux/aliases.sh"
 
 export PATH="$HOME/.local/bin:$PATH"
 
