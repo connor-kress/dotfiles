@@ -64,26 +64,17 @@ set -o vi
 
 eval "$(zoxide init zsh)"
 
-alias cd="z"
-alias i="sudo dnf install"
-alias ll="ls -lah"
-alias treee="tree -a -I node_modules -I .git -I .next -I .expo -I target -I cmake-build-debug -I CMakeFiles -I __pycache__ -I .docusaurus"
-alias clip="xclip -selection clipboard"
-alias push-old="pass git/github/token -c && git push origin master"
-alias push="pass git/github/token -c && git push origin main"
-alias pw="gpg -d ~/Storage/Secrets/secret.txt.gpg | tr -d '\n' | xclip -selection clipboard"
-alias phy="python -i /home/connor/Code/Physics/utils.py"
-alias dl="yt-dlp --format 'bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]'"
-alias rm="trash"
-alias open="xdg-open"
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+else
+    echo "Warning: ~/.aliases not found"
+fi
 
-export pdf() {
-    (evince "$@" > /dev/null 2>&1 & disown; true) > /dev/null 2>&1
-}
-
-export img() {
-    (loupe "$@" > /dev/null 2>&1 & disown; true) > /dev/null 2>&1
-}
+if [ -f ~/.zsh_functions ]; then
+    . ~/.zsh_functions
+else
+    echo "Warning: ~/.zsh_functions not found"
+fi
 
 source "$HOME/Scripts/Tmux/aliases.sh"
 

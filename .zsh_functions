@@ -1,0 +1,7 @@
+export pdf() {
+    (evince "$@" > /dev/null 2>&1 & disown; true) > /dev/null 2>&1
+}
+
+export img() {
+    (loupe "$@" > /dev/null 2>&1 & disown; true) > /dev/null 2>&1
+}
