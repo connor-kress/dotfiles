@@ -8,7 +8,9 @@ return {
             view_options = {
                 show_hidden = true,
                 is_always_hidden = function(name, _)
-                    return Contains({ "..", ".git", "node_modules" }, name)
+                    return Contains({
+                        "..", ".git", "node_modules", ".docusaurus"
+                    }, name)
                 end
             },
         })

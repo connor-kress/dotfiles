@@ -2,15 +2,15 @@ local on_attach = require("util.lsp").on_attach
 local diagnostic_signs = require("util.lsp").diagnostic_signs
 
 local config = function()
-  require("neoconf").setup({})
+    require("neoconf").setup({})
 
-  local capabilities = require("cmp_nvim_lsp").default_capabilities()
-  local lspconfig = require("lspconfig")
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    local lspconfig = require("lspconfig")
 
-  for type, icon in pairs(diagnostic_signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-  end
+    for type, icon in pairs(diagnostic_signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    end
 
     -- lua
     lspconfig.lua_ls.setup({
@@ -77,6 +77,7 @@ local config = function()
                     autoImportCompletions = true,
                 },
             }, }, })
+
     -- json
     lspconfig.jsonls.setup({
         capabilities = capabilities,
@@ -128,14 +129,15 @@ local config = function()
 end
 
 return {
-  "neovim/nvim-lspconfig",
-  config = config,
-  lazy = false,
-  dependencies = {
-    "windwp/nvim-autopairs",
-    "williamboman/mason.nvim",
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-nvim-lsp",
-  },
+    "neovim/nvim-lspconfig",
+    config = config,
+    lazy = false,
+    dependencies = {
+        "windwp/nvim-autopairs",
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "hrsh7th/nvim-cmp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-nvim-lsp",
+    },
 }
