@@ -126,6 +126,12 @@ local config = function()
         capabilities = capabilities,
         on_attach = on_attach,
     })
+
+    -- golang
+    lspconfig.gopls.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+    })
 end
 
 return {

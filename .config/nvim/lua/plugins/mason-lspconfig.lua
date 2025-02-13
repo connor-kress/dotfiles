@@ -14,6 +14,7 @@ return {
                 "tailwindcss",
                 "bashls",
                 "dockerls",
+                "gopls",
             },
         })
     end,
