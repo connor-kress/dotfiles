@@ -19,16 +19,16 @@ M.on_attach = function(client, buffer)
     end
 
     -- Format on save
-    if client.server_capabilities.documentFormattingProvider then
-        local group = vim.api.nvim_create_augroup("FormatOnSave", { clear = true })
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            group = group,
-            buffer = buffer,
-            callback = function()
-                vim.lsp.buf.format({ async = false })
-            end,
-        })
-    end
+    -- if client.server_capabilities.documentFormattingProvider then
+    --     local group = vim.api.nvim_create_augroup("FormatOnSave", { clear = true })
+    --     vim.api.nvim_create_autocmd("BufWritePre", {
+    --         group = group,
+    --         buffer = buffer,
+    --         callback = function()
+    --             vim.lsp.buf.format({ async = false })
+    --         end,
+    --     })
+    -- end
 end
 
 M.diagnostic_signs = { Error = " ", Warn = " ", Hint = "ﴞ ", Info = "" }
