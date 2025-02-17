@@ -3,6 +3,8 @@ show-read-feeds false
 
 bind-key j down
 bind-key k up
+bind-key g home
+bind-key G end
 bind-key - quit
 browser "setsid -f firefox > /dev/null 2>&1"
 macro , open-in-browser
