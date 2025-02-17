@@ -6,6 +6,7 @@ local small_indent_fts = {
     "javascriptreact",
     "typescriptreact",
     "html",
+    "xml",
     "css",
     "json",
     "jsonc",
