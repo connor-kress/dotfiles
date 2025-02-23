@@ -11,7 +11,7 @@ vim.keymap.set('v', '>', '>gv', {})
 vim.keymap.set('v', '<', '<gv', {})
 
 -- latex
-vim.keymap.set("n", "<leader>l", ":w<CR>:!pdflatex %<CR>")
+vim.keymap.set("n", "<leader>l", ":w<CR>:!pdflatex -output-directory=build %<CR>")
 -- (already provided by the vimtex plugin)
 
 -- comments (uses comment.nvim)
