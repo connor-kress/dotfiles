@@ -10,6 +10,11 @@ vim.keymap.set('n', '-', '<CMD>Oil<CR>')
 vim.keymap.set('v', '>', '>gv', {})
 vim.keymap.set('v', '<', '<gv', {})
 
+-- latex
+-- vim.keymap.set("n", "<leader>ll", ":w<CR>:!pdflatex %<CR>")
+-- (already provided by the vimtex plugin)
+
 -- comments (uses comment.nvim)
 vim.api.nvim_set_keymap('n', '<C-c>', 'gcc', {})
 vim.api.nvim_set_keymap('v', '<C-c>', 'gcgv', {})
+
