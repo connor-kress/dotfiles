@@ -10,9 +10,13 @@ vim.keymap.set('n', '-', '<CMD>Oil<CR>')
 vim.keymap.set('v', '>', '>gv', {})
 vim.keymap.set('v', '<', '<gv', {})
 
--- latex
+-- latex compile
 vim.keymap.set("n", "<leader>l", ":w<CR>:!pdflatex -output-directory=build %<CR>")
--- (already provided by the vimtex plugin)
+-- (already provided by the vimtex plugin?)
+
+-- R markdown compile
+vim.keymap.set("n", "<leader>r", ":w<CR>:!Rscript -e \"rmarkdown::render('%')\"")
+
 
 -- comments (uses comment.nvim)
 vim.api.nvim_set_keymap('n', '<C-c>', 'gcc', {})
