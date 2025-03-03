@@ -52,7 +52,6 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
-export EDITOR="/usr/bin/nvim"
 export MANPAGER='nvim +Man!'
 
 export HISTFILE=~/.zsh_history
