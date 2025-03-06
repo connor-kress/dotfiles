@@ -20,3 +20,5 @@ alias dl="yt-dlp --format 'bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]'"
 alias rm="trash"
 
 alias open="xdg-open"
+
+alias psql-tbh='ssh -t connor@textbookheaven.org "docker exec -it textbook-heaven-db-1 psql -U connor -d textbook_heaven"'
