@@ -24,6 +24,10 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
+export EDITOR="/usr/bin/nvim"
+export VISUAL="/usr/bin/nvim"
+export MANPAGER='nvim +Man!'
+
 # PS1="\u@\h:\w$ "
 PS1="\u@\h:\w$ "
 
