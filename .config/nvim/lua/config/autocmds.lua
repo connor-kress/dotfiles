@@ -12,6 +12,7 @@ local small_indent_fts = {
     "jsonc",
     "yaml",
     "toml",
+    "tex",
 }
 
 vim.api.nvim_create_autocmd("BufEnter", {
