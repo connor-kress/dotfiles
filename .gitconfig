@@ -9,3 +9,5 @@
 	defaultBranch = main
 [commit]
 	gpgSign = true
+[fetch]
+	prune = true
