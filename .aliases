@@ -4,7 +4,7 @@ alias i="sudo dnf install"
 
 alias ll="ls -lah"
 
-alias treee="tree -a -I node_modules -I .git -I .next -I .expo -I target -I cmake-build-debug -I CMakeFiles -I __pycache__ -I .docusaurus"
+alias treee="tree -a -I node_modules -I .git -I .next -I .expo -I target -I build -I cmake-build-debug -I CMakeFiles -I __pycache__ -I .docusaurus"
 
 alias clip="xclip -selection clipboard"
 
@@ -22,3 +22,4 @@ alias rm="trash"
 alias open="xdg-open"
 
 alias psql-tbh='ssh -t connor@textbookheaven.org "docker exec -it textbook-heaven-db-1 psql -U connor -d textbook_heaven"'
+alias psql-swamp='ssh -t swamp "sudo docker exec -it swamp-study-postgres-1 psql -U connor -d swampstudy"'
