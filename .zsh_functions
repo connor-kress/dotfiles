@@ -5,3 +5,11 @@ export pdf() {
 export img() {
     (loupe "$@" > /dev/null 2>&1 & disown; true) > /dev/null 2>&1
 }
+
+export show() {
+    ssh -t darbox "/var/lib/chat/show.sh 'connor'" 2>/dev/null
+}
+
+export send() {
+    ssh -t darbox "/var/lib/chat/send.sh 'connor' 'mandar' '$1'" 2>/dev/null
+}
