@@ -13,4 +13,4 @@ macro v set browser "setsid -f play '%u' > /dev/null 2>&1"; open-in-browser; set
 
 macro d set browser "setsid -f download '%u' > /dev/null 2>&1"; open-in-browser; set browser "setsid -f firefox > /dev/null 2>&1"
 
-macro x set browser "setsid -f delete '%u' > /dev/null 2>&1"; open-in-browser; set browser "setsid -f firefox > /dev/null 2>&1"
+macro r set browser "setsid -f delete '%u' > /dev/null 2>&1"; open-in-browser; set browser "setsid -f firefox > /dev/null 2>&1"
