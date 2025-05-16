@@ -2,6 +2,15 @@ local on_attach = require("util.lsp").on_attach
 
 local config = function()
     require("neoconf").setup({})
+    vim.diagnostic.config({
+        virtual_text = { -- turn on inline text
+            -- prefix = "●",
+            spacing = 2,
+        },
+        signs = true, -- keep the gutter signs too
+        underline = true, -- underline the problem range
+        update_in_insert = false,
+    })
 
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     local lspconfig = require("lspconfig")
@@ -81,7 +90,9 @@ local config = function()
                     diagnosticMode = "workspace",
                     autoImportCompletions = true,
                 },
-            }, }, })
+            },
+        },
+    })
 
     -- json
     lspconfig.jsonls.setup({
@@ -95,7 +106,9 @@ local config = function()
         on_attach = on_attach,
         capabilities = capabilities,
         filetypes = { "typescript", "typescriptreact", "typescript.tsx", "css" },
-        root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
+        root_dir = lspconfig.util.root_pattern(
+            "package.json", "tsconfig.json", ".git"
+        ),
     })
 
     -- css
@@ -103,7 +116,9 @@ local config = function()
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "css", "scss", "less" },
-        root_dir = lspconfig.util.root_pattern("package.json", "tailwind.config.ts", ".git"),
+        root_dir = lspconfig.util.root_pattern(
+            "package.json", "tailwind.config.ts", ".git"
+        ),
         settings = {
             css = { validate = true,
                 lint = { unknownAtRules = "ignore", },
@@ -115,8 +130,13 @@ local config = function()
     lspconfig.tailwindcss.setup({
         capabilities = capabilities,
         on_attach = on_attach,
-        filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
-        root_dir = lspconfig.util.root_pattern("package.json", "tailwind.config.ts", ".git"),
+        filetypes = {
+            "html", "css", "javascript", "javascriptreact", "typescript",
+            "typescriptreact", "vue", "svelte"
+        },
+        root_dir = lspconfig.util.root_pattern(
+            "package.json", "tailwind.config.ts", ".git"
+        ),
     })
 
     -- bash

@@ -1,25 +1,14 @@
 return {
-    "glepnir/lspsaga.nvim",
-    lazy = false,
+    "nvimdev/lspsaga.nvim",
     config = function()
-    require("lspsaga").setup({
-        -- remove lightbulb symbols
-        ui = {
-            code_action = "",
-        },
-        -- keybinds for navigation in lspsaga window
-        move_in_saga = { prev = "<c-k>", next = "<c-j>" },
-        -- use enter to open file with finder
-        finder_action_keys = {
-            open = "<cr>",
-        },
-        -- use enter to open file with definition preview
-        definition_action_keys = {
-            edit = "<cr>",
-        },
-    })
+        require("lspsaga").setup({
+            ui = {
+                code_action = ""
+            },
+        })
     end,
     dependencies = {
         "nvim-treesitter/nvim-treesitter",
+        "nvim-tree/nvim-web-devicons",
     },
 }
