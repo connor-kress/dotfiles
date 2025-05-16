@@ -31,6 +31,4 @@ M.on_attach = function(client, buffer)
     -- end
 end
 
-M.diagnostic_signs = { Error = " ", Warn = " ", Hint = "ﴞ ", Info = "" }
-
 return M
