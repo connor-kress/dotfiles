@@ -83,6 +83,7 @@ export PATH="$HOME/go/bin:$PATH"
 export ANDROID_HOME=/home/connor/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$HOME/Code/rust/runelink/target/debug
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
