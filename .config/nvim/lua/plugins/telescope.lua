@@ -9,7 +9,7 @@ return {
         "package%-lock.json",
         "lazy%-lock.json",
         "CMakeFiles",
-        "build",
+        "build/",
         ".git/.*",
         "%.o",
         "%.out",
