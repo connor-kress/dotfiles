@@ -10,6 +10,7 @@ local config = function()
       "c",
       "cpp",
       "rust",
+      "java",
       "bash",
       "markdown",
       "javascript",

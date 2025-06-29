@@ -7,6 +7,7 @@ return {
                 "lua_ls",
                 "clangd",
                 "rust_analyzer",
+                "jdtls",
                 "pyright",
                 "jsonls",
                 "tsserver",
