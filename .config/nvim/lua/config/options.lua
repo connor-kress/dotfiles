@@ -1,4 +1,9 @@
 local opt = vim.opt
+local g = vim.g
+
+-- Globals
+g.mapleader = " "
+g.maplocalleader = " "
 
 -- Tab / Indentation
 opt.tabstop = 4
@@ -23,7 +28,7 @@ opt.colorcolumn = ""
 opt.signcolumn = "yes"
 opt.cmdheight = 1
 opt.scrolloff = 10
-opt.completeopt = "menuone,noinsert"
+opt.completeopt = "menu,menuone,noselect" -- required for nvim-cmp
 
 -- Behaviour
 opt.hidden = true

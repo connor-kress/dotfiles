@@ -1,4 +1,22 @@
-local on_attach = require("util.lsp").on_attach
+local on_attach = function(client, buffer)
+    local opts = { noremap = true, silent = true, buffer = buffer }
+    require("config.mappings").set_lsp_keymap(client, opts)
+
+    -- Format on save
+    -- if client.server_capabilities.documentFormattingProvider then
+    --     local group = vim.api.nvim_create_augroup(
+    --         "FormatOnSave",
+    --         { clear = true }
+    --     )
+    --     vim.api.nvim_create_autocmd("BufWritePre", {
+    --         group = group,
+    --         buffer = buffer,
+    --         callback = function()
+    --             vim.lsp.buf.format({ async = false })
+    --         end,
+    --     })
+    -- end
+end
 
 local config = function()
     require("neoconf").setup({})
