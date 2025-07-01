@@ -29,6 +29,9 @@ map_key("n", "<leader>r", ":!Rscript -e \"rmarkdown::render('%')\"<CR>", opts)
 nvim_map_key("n", "<C-c>", "gcc", opts_with_remap)
 nvim_map_key("v", "<C-c>", "gcgv", opts_with_remap)
 
+-- Supermaven
+map_key("n", "<leader>sm", ":SupermavenToggle<CR>")
+
 -- LSP Keymaps (used in lspconfig.lua for on_attach)
 M.set_lsp_keymap = function(client, lsp_opts)
     map_key("n", "K", ":Lspsaga hover_doc<CR>", lsp_opts)
