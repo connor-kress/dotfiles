@@ -29,3 +29,22 @@ vim.api.nvim_create_autocmd("BufEnter", {
         end
     end
 })
+
+local document_fts = {
+    "markdown",
+    "tex",
+}
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    callback = function()
+        -- print("filetype = " .. vim.bo.filetype)
+        if Contains(document_fts, vim.bo.filetype) then
+            vim.o.spell = true
+            vim.o.breakindent = true
+            vim.o.breakindentopt = "shift:2"
+        else
+            vim.o.spell = false
+            vim.o.breakindent = false
+        end
+    end
+})

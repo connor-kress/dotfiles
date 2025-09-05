@@ -18,6 +18,20 @@ map_key("n", "-", "<CMD>Oil<CR>", opts)
 map_key("v", ">", ">gv", opts)
 map_key("v", "<", "<gv", opts)
 
+local function toggle_breakindent()
+    if vim.o.breakindent then
+        vim.o.breakindent = false
+    else
+        vim.o.breakindent = true
+        vim.o.breakindentopt = "shift:2"
+    end
+end
+
+map_key("n", "<leader>i", toggle_breakindent, {
+    desc = "Toggle breakindent",
+})
+
+
 -- Latex Compile
 -- This is already provided by the vimtex plugin but is less consistent
 map_key("n", "<leader>l", ":!pdflatex -output-directory=build %<CR>", opts)
@@ -30,18 +44,9 @@ nvim_map_key("n", "<C-c>", "gcc", opts_with_remap)
 nvim_map_key("v", "<C-c>", "gcgv", opts_with_remap)
 
 -- Supermaven
-map_key("n", "<leader>sm", ":SupermavenToggle<CR>",
-        { desc = "Toggle Supermaven" })
-
--- Indentation
-map_key("n", "<leader>i", function()
-  if vim.o.breakindent then
-    vim.o.breakindent = false
-  else
-    vim.o.breakindent = true
-    vim.o.breakindentopt = "shift:2"
-  end
-end, { desc = "Toggle breakindent" })
+map_key("n", "<leader>sm", ":SupermavenToggle<CR>", {
+    desc = "Toggle Supermaven",
+})
 
 -- LSP Keymaps (used in lspconfig.lua for on_attach)
 M.set_lsp_keymap = function(client, lsp_opts)
