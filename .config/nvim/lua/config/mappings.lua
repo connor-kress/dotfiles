@@ -30,7 +30,18 @@ nvim_map_key("n", "<C-c>", "gcc", opts_with_remap)
 nvim_map_key("v", "<C-c>", "gcgv", opts_with_remap)
 
 -- Supermaven
-map_key("n", "<leader>sm", ":SupermavenToggle<CR>")
+map_key("n", "<leader>sm", ":SupermavenToggle<CR>",
+        { desc = "Toggle Supermaven" })
+
+-- Indentation
+map_key("n", "<leader>i", function()
+  if vim.o.breakindent then
+    vim.o.breakindent = false
+  else
+    vim.o.breakindent = true
+    vim.o.breakindentopt = "shift:2"
+  end
+end, { desc = "Toggle breakindent" })
 
 -- LSP Keymaps (used in lspconfig.lua for on_attach)
 M.set_lsp_keymap = function(client, lsp_opts)
