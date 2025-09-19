@@ -13,3 +13,21 @@ export show() {
 export send() {
     ssh -t darbox "/var/lib/chat/send.sh 'connor' 'mandar' '$1'" 2>/dev/null
 }
+
+export chatw() {
+    sudo systemctl start ollama
+    chat "$@"
+    sudo systemctl stop ollama
+}
+
+export chat-med() {
+    chat qwen3:1.7b
+}
+
+export chatw-med() {
+    chatw qwen3:1.7b
+}
+
+export reencode() {
+    ffmpeg -i "$1" -c:v libx264 -preset medium -crf 23 "$2"
+}

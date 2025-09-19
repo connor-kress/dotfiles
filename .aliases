@@ -15,6 +15,8 @@ alias pw="gpg -d ~/Storage/Secrets/secret.txt.gpg | tr -d '\n' | xclip -selectio
 
 alias phy="python -i /home/connor/Code/Physics/utils.py"
 
+alias eco="python -i /home/connor/Code/Python/excelpy/main.py"
+
 alias dl="yt-dlp --format 'bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]'"
 
 alias rm="trash"
@@ -23,3 +25,12 @@ alias open="xdg-open"
 
 alias psql-tbh='ssh -t connor@textbookheaven.org "docker exec -it textbook-heaven-db-1 psql -U connor -d textbook_heaven"'
 alias psql-swamp='ssh -t swamp "sudo docker exec -it swamp-study-postgres-1 psql -U connor -d swampstudy"'
+
+alias priv="mullvad connect --wait && flatpak run app.zen_browser.zen --private-window & disown > /dev/null 2>&1"
+
+alias ollama-start="sudo systemctl start ollama"
+alias ollama-stop="sudo systemctl stop ollama"
+
+alias dlc="/home/connor/Code/rust/dlc/target/debug/dlc"
+
+alias passc='pass -c $(cd .password-store && fd | grep "\.gpg$" | sed "s/\.gpg$//" | fzf)'
