@@ -1,5 +1,6 @@
-show-keymap-hint no
+show-keymap-hint false
 show-read-feeds false
+show-read-articles false
 
 bind-key j down
 bind-key k up
