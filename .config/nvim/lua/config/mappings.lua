@@ -61,7 +61,7 @@ M.set_lsp_keymap = function(client, lsp_opts)
     map_key("n", "<leader>pd", ":Lspsaga diagnostic_jump_prev<CR>", lsp_opts)
     map_key("n", "<leader>nd", ":Lspsaga diagnostic_jump_next<CR>", lsp_opts)
     if client.name == "pyright" then
-        map_key("n", "<Leader>oi", "PyrightOrganizeImports", lsp_opts)
+        map_key("n", "<Leader>oi", ":PyrightOrganizeImports<CR>", lsp_opts)
     end
 end
 
