@@ -4,7 +4,7 @@ alias i="sudo dnf install"
 
 alias ll="ls -lah"
 
-alias treee="tree -a -I node_modules -I .git -I .next -I .expo -I target -I build -I cmake-build-debug -I CMakeFiles -I __pycache__ -I .docusaurus"
+alias treee="tree -a -I node_modules -I .git -I .next -I .expo -I target -I build -I cmake-build-debug -I CMakeFiles -I __pycache__ -I .docusaurus -I .medusa"
 
 alias clip="xclip -selection clipboard"
 
