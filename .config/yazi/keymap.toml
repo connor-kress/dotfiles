@@ -1,0 +1,5 @@
+[mgr]
+prepend_keymap = [
+	{ on = "<Enter>", run = "plugin smart-enter --sync", desc = "enter dir or open file" },
+	{ on = "l",       run = "plugin smart-enter --sync", desc = "enter dir or open file" },
+]
