@@ -36,6 +36,9 @@ map_key("n", "<leader>i", toggle_breakindent, {
 -- This is already provided by the vimtex plugin but is less consistent
 map_key("n", "<leader>l", ":!pdflatex -output-directory=build %<CR>", opts)
 
+-- Make Compile
+map_key("n", "<leader>m", ":!make<CR>", opts)
+
 -- R Markdown Compile
 map_key("n", "<leader>r", ":!Rscript -e \"rmarkdown::render('%')\"<CR>", opts)
 
