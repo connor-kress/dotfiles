@@ -30,7 +30,7 @@ local function parse_bass_treble_from_af()
     return bass or 0, treble or 0
 end
 
-local step = 2
+local step = 1
 local bass = 0
 local treble = 0
 
@@ -61,25 +61,25 @@ mp.add_key_binding("b", "bass_up", function()
     bass = bass + step
     apply_filters()
     display_bass()
-end)
+end, { repeatable = true })
 
 mp.add_key_binding("B", "bass_down", function()
     bass = bass - step
     apply_filters()
     display_bass()
-end)
+end, { repeatable = true })
 
 mp.add_key_binding("t", "treble_up", function()
     treble = treble + step
     apply_filters()
     display_treble()
-end)
+end, { repeatable = true })
 
 mp.add_key_binding("T", "treble_down", function()
     treble = treble - step
     apply_filters()
     display_treble()
-end)
+end, { repeatable = true })
 
 mp.add_key_binding("r", "reset_eq", function()
     bass = 0
