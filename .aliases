@@ -34,3 +34,7 @@ alias ollama-stop="sudo systemctl stop ollama"
 alias dlc="/home/connor/Code/rust/dlc/target/debug/dlc"
 
 alias passc='pass -c $(cd .password-store && fd | grep "\.gpg$" | sed "s/\.gpg$//" | fzf)'
+
+alias m-c="mullvad connect --wait"
+alias m-r="mullvad reconnect --wait"
+alias m-d="mullvad disconnect"
