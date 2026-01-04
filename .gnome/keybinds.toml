@@ -1,0 +1,129 @@
+[[keybinds]]
+description = """
+This file is NOT an official config file for the Gnome DE. It is meant to be
+human readable and to be read with custom scripts. Gnome keybindings are
+manually edited in the Settings desktop application.
+
+All scripts in ~/Scripts are available at
+https://github.com/connor-kress/Scripts.git
+"""
+
+[[keybinds.custom]]
+name = "Convert Clipboard To Title Case"
+command = """python /home/connor/Scripts/title_case.py"""
+shortcut = "<Ctrl><Alt>o"
+
+[[keybinds.custom]]
+name = "Delete Video From Clipboard"
+command = """
+sh -c 'delete "$(xclip -selection clipboard -o)"'
+"""
+shortcut = "<Ctrl><Alt>r"
+
+[[keybinds.custom]]
+name = "Download Video From Clipboard"
+command = """
+sh -c 'download "$(xclip -selection clipboard -o)"'
+"""
+shortcut = "<Ctrl><Alt>d"
+
+[[keybinds.custom]]
+name = "Play Video From Clipboard"
+command = """
+sh -c 'play "$(xclip -selection clipboard -o)"'
+"""
+shortcut = "<Ctrl><Alt>p"
+
+[[keybinds.custom]]
+name = "Format JSON"
+command = """
+echo "$(xclip -selection clipboard -o)" | jq | xclip -selection clipboard
+"""
+shortcut = "<Ctrl><Alt>f"
+
+[[keybinds.custom]]
+name = "Open Alacritty"
+command = """alacritty"""
+shortcut = "<Ctrl><Alt>t"
+
+[[keybinds.custom]]
+name = "Open Calcurse"
+command = """alacritty -e calcurse"""
+shortcut = "<Ctrl><Alt>j"
+
+[[keybinds.custom]]
+name = "Open Cmus"
+command = """
+alacritty -e bash -c '$HOME/Scripts/Tmux/music.sh'
+"""
+shortcut = "<Ctrl><Alt>m"
+
+[[keybinds.custom]]
+name = "Open Htop"
+command = """alacritty -e htop"""
+shortcut = "<Ctrl><Alt>h"
+
+[[keybinds.custom]]
+name = "Open Newsboat"
+command = """
+alacritty -e bash -c 'PATH="$PATH:/home/connor/.local/bin" && newsboat'
+"""
+shortcut = "<Ctrl><Alt>n"
+
+[[keybinds.custom]]
+name = "Open Yazi"
+command = """
+alacritty -e bash -c 'EDITOR="/usr/bin/nvim" yazi'
+"""
+shortcut = "<Ctrl><Alt>k"
+
+[[keybinds.custom]]
+name = "Open Notes File"
+command = """
+alacritty -e nvim /home/connor/Notes/Random/notes.md
+"""
+shortcut = "<Ctrl><Alt>n"
+
+[[keybinds.custom]]
+name = "Open Watchlater"
+command = """
+alacritty -e nvim /home/connor/Notes/Random/watchlater.md
+"""
+shortcut = "<Ctrl><Alt>w"
+
+[[keybinds.custom]]
+name = "Open Sowon Timer"
+command = """sowon"""
+shortcut = "<Ctrl><Alt>s"
+notes = "This program is compiled from source."
+
+[[keybinds.custom]]
+name = "pass: Copy Password"
+command = """
+alacritty -e bash -c 'pass -c $(cd .password-store && fd | grep "\.gpg$" | sed "s/\.gpg$//" | fzf) || read'
+"""
+shortcut = "<Ctrl><Alt>y"
+
+[[keybinds.custom]]
+name = "pass: Copy OTP"
+command = """
+alacritty -e bash -c 'pass otp -c $(cd .password-store && fd | grep "\.gpg$" | sed "s/\.gpg$//" | fzf) || read'
+"""
+shortcut = "<Shift><Ctrl><Alt>y"
+
+[[keybinds.custom]]
+name = "pass: Display Password"
+command = """
+alacritty -e bash -c 'cd .password-store && fd -e gpg | sed "s/\.gpg$//" | fzf | xargs -r -I{} bash -c "pass \"{}\" | nvim -R -"'
+"""
+shortcut = "<Shift><Ctrl>y"
+
+[[keybinds.custom]]
+name = "Play/Pause Music"
+command = """playerctl play-pause"""
+shortcut = "<Ctrl> "
+
+# [[keybinds.custom]]
+# name = "Search with ytfzf"
+# command = """alacritty -e ytfzf"""
+# shortcut = "..."
