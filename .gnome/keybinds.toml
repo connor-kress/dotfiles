@@ -30,7 +30,7 @@ shortcut = "<Ctrl><Alt>d"
 [[keybinds.custom]]
 name = "Play Video From Clipboard"
 command = """
-sh -c 'play "$(xclip -selection clipboard -o)"'
+sh -c 'play-custom "$(xclip -selection clipboard -o)"'
 """
 shortcut = "<Ctrl><Alt>p"
 
