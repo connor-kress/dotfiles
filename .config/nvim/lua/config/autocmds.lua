@@ -48,3 +48,12 @@ vim.api.nvim_create_autocmd("BufEnter", {
         end
     end
 })
+
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+    callback = function(args)
+        local ok = pcall(vim.treesitter.get_parser, args.buf)
+        if ok then
+            vim.treesitter.start(args.buf)
+        end
+    end,
+})
