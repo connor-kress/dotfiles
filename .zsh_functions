@@ -31,3 +31,14 @@ export chatw-med() {
 export reencode() {
     ffmpeg -i "$1" -c:v libx264 -preset medium -crf 23 "$2"
 }
+
+export qwen3-server() {
+    xdg-open http://127.0.0.1:8080
+    llama-server \
+      --model ~/models/qwen3-vl-2b/Qwen3VL-2B-Instruct-Q4_K_M.gguf \
+      --mmproj ~/models/qwen3-vl-2b/mmproj-Qwen3VL-2B-Instruct-Q8_0.gguf \
+      --host 127.0.0.1 \
+      --port 8080 \
+      --ctx-size 16384 \
+      --threads 8
+  }
