@@ -83,7 +83,15 @@ export PATH="$HOME/go/bin:$PATH"
 export ANDROID_HOME=/home/connor/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$HOME/Code/rust/runelink/target/debug
+export PATH=$PATH:$HOME/Code/runelink/runelink/target/debug
+export PATH=$PATH:$HOME/Software/llama.cpp/build/bin
+
+
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+# Bun completions
+[ -s "/home/connor/.bun/_bun" ] && source "/home/connor/.bun/_bun"
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -91,6 +99,18 @@ eval "$(pyenv init - zsh)"
 
 . "$HOME/.cargo/env"
 
+# pnpm
+export PNPM_HOME="/home/connor/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
