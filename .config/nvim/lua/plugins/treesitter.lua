@@ -31,6 +31,8 @@ return {
         auto_install = true,
     },
     config = function(_, opts)
+        -- Use rust highlighting for darlang files
+        vim.treesitter.language.register("rust", "darlang")
         require("nvim-treesitter").setup(opts)
     end,
 }

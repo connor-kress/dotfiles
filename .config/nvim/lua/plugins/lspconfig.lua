@@ -88,7 +88,7 @@ local config = function()
                 diagnostics = {
                     enable = true,
                     experimental = {
-                        enable = true,
+                        enable = false,
                     },
                 },
             },
