@@ -31,7 +31,12 @@ local config = function()
     })
 
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
-    local lspconfig = require("lspconfig")
+    local servers = {}
+
+    local configure_server = function(server, opts)
+        table.insert(servers, server)
+        vim.lsp.config(server, opts)
+    end
 
     vim.diagnostic.config({
         signs = {
@@ -45,7 +50,7 @@ local config = function()
     })
 
     -- lua
-    lspconfig.lua_ls.setup({
+    configure_server("lua_ls", {
         capabilities = capabilities,
         on_attach = on_attach,
         settings = {
@@ -65,18 +70,18 @@ local config = function()
     })
 
     -- C/C++
-    lspconfig.clangd.setup({
+    configure_server("clangd", {
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "c", "cpp" },
     })
 
     -- Rust
-    lspconfig.rust_analyzer.setup({
+    configure_server("rust_analyzer", {
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "rust" },
-        root_dir = lspconfig.util.root_pattern("Cargo.toml"),
+        root_markers = { "Cargo.toml" },
         settings = {
             [ "rust_analyzer" ] = {
                 cargo = {
@@ -96,7 +101,7 @@ local config = function()
     })
 
     -- python
-    lspconfig.pyright.setup({
+    configure_server("pyright", {
         capabilities = capabilities,
         on_attach = on_attach,
         settings = {
@@ -113,37 +118,33 @@ local config = function()
     })
 
     -- json
-    lspconfig.jsonls.setup({
+    configure_server("jsonls", {
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "json", "jsonc" },
     })
 
     -- java
-    lspconfig.jdtls.setup({
+    configure_server("jdtls", {
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "java" },
     })
 
     -- typescript
-    lspconfig.ts_ls.setup({
+    configure_server("ts_ls", {
         on_attach = on_attach,
         capabilities = capabilities,
         filetypes = { "typescript", "typescriptreact", "typescript.tsx", "css" },
-        root_dir = lspconfig.util.root_pattern(
-            "package.json", "tsconfig.json", ".git"
-        ),
+        root_markers = { "package.json", "tsconfig.json", ".git" },
     })
 
     -- css
-    lspconfig.cssls.setup({
+    configure_server("cssls", {
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "css", "scss", "less" },
-        root_dir = lspconfig.util.root_pattern(
-            "package.json", "tailwind.config.ts", ".git"
-        ),
+        root_markers = { "package.json", "tailwind.config.ts", ".git" },
         settings = {
             css = { validate = true,
                 lint = { unknownAtRules = "ignore", },
@@ -152,37 +153,37 @@ local config = function()
     })
 
     -- tailwind
-    lspconfig.tailwindcss.setup({
+    configure_server("tailwindcss", {
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = {
             "html", "css", "javascript", "javascriptreact", "typescript",
             "typescriptreact", "vue", "svelte"
         },
-        root_dir = lspconfig.util.root_pattern(
-            "package.json", "tailwind.config.ts", ".git"
-        ),
+        root_markers = { "package.json", "tailwind.config.ts", ".git" },
     })
 
     -- bash
-    lspconfig.bashls.setup({
+    configure_server("bashls", {
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "sh" },
     })
 
     -- docker
-    lspconfig.dockerls.setup({
+    configure_server("dockerls", {
         capabilities = capabilities,
         on_attach = on_attach,
     })
 
     -- golang
-    lspconfig.gopls.setup({
+    configure_server("gopls", {
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "go" },
     })
+
+    vim.lsp.enable(servers)
 end
 
 return {
