@@ -91,11 +91,11 @@ alacritty -e nvim /home/connor/Notes/Random/watchlater.md
 """
 shortcut = "<Ctrl><Alt>w"
 
-[[keybinds.custom]]
-name = "Open Sowon Timer"
-command = """sowon"""
-shortcut = "<Ctrl><Alt>s"
-notes = "This program is compiled from source."
+# [[keybinds.custom]]
+# name = "Open Sowon Timer"
+# command = """sowon"""
+# shortcut = "<Ctrl><Alt>s"
+# notes = "This program is compiled from source."
 
 [[keybinds.custom]]
 name = "pass: Copy Password"
@@ -127,3 +127,8 @@ shortcut = "<Ctrl> "
 # name = "Search with ytfzf"
 # command = """alacritty -e ytfzf"""
 # shortcut = "..."
+
+[[keybinds.custom]]
+name = "Tmux Sessionizer"
+command = """alacritty -e bash -c '~/Scripts/Tmux/$(for f in ~/Scripts/Tmux/*.sh; do basename "${f%.sh}"; done | fzf).sh'"""
+shortcut = "<Ctrl><Alt>s"
