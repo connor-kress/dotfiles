@@ -41,4 +41,9 @@ export qwen3-server() {
       --port 8080 \
       --ctx-size 16384 \
       --threads 8
-  }
+}
+
+export speak() {
+    local text
+    read -r "text?Speak: " && ~/Scripts/speak_text.py "$text"
+}
