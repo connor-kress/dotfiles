@@ -83,7 +83,7 @@ export PATH="$HOME/go/bin:$PATH"
 export ANDROID_HOME=/home/connor/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$HOME/Code/runelink/runelink/target/debug
+export PATH=$PATH:$HOME/Code/runelink/runelink-core/target/debug
 export PATH=$PATH:$HOME/Software/llama.cpp/build/bin
 
 
