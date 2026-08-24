@@ -8,10 +8,10 @@ All scripts in ~/Scripts are available at
 https://github.com/connor-kress/Scripts.git
 """
 
-[[keybinds.custom]]
-name = "Convert Clipboard To Title Case"
-command = """python /home/connor/Scripts/title_case.py"""
-shortcut = "<Ctrl><Alt>o"
+# [[keybinds.custom]]
+# name = "Convert Clipboard To Title Case"
+# command = """python /home/connor/Scripts/title_case.py"""
+# shortcut = "<Ctrl><Alt>o"
 
 [[keybinds.custom]]
 name = "Delete Video From Clipboard"
@@ -50,6 +50,12 @@ shortcut = "<Ctrl><Alt>t"
 name = "Open Calcurse"
 command = """alacritty -e calcurse"""
 shortcut = "<Ctrl><Alt>j"
+
+
+[[keybinds.custom]]
+name = "Open Opencode"
+command = """alacritty -e /home/connor/.nvm/versions/node/v22.22.0/bin/opencode"""
+shortcut = "<Ctrl><Alt>o"
 
 [[keybinds.custom]]
 name = "Open Cmus"
