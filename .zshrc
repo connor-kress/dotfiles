@@ -79,6 +79,7 @@ source "$HOME/Scripts/Tmux/aliases.sh"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/Scripts:$PATH"
 
 export ANDROID_HOME=/home/connor/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
