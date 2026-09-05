@@ -1,6 +1,6 @@
 [user]
 	name = Connor Kress
-	email = ckress@ufl.edu
+	email = connor@ckress.dev
 	signingkey = EB2736E78BD99C62
 
 [credential]
@@ -8,6 +8,6 @@
 [init]
 	defaultBranch = main
 [commit]
-	gpgSign = true
+	gpgsign = true
 [fetch]
 	prune = true
