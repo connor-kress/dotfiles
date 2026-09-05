@@ -75,8 +75,6 @@ else
     echo "Warning: ~/.zsh_functions not found"
 fi
 
-source "$HOME/Scripts/Tmux/aliases.sh"
-
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/Scripts:$PATH"
