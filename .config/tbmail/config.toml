@@ -4,3 +4,6 @@ work = "connor@agintel.ai"
 personal = "connor@ckress.dev"
 gmail = "ckress04@gmail.com"
 gmail-old = "con2coool@gmail.com"
+
+[thunderbird]
+command = ["flatpak", "run", "org.mozilla.thunderbird_esr", "--headless"]
