@@ -19,6 +19,7 @@ return {
             "markdown",
             "markdown_inline",
             "javascript",
+            "json",
             "typescript",
             "tsx",
             "html",

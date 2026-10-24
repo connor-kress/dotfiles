@@ -1,21 +1,6 @@
 local on_attach = function(client, buffer)
     local opts = { noremap = true, silent = true, buffer = buffer }
     require("config.mappings").set_lsp_keymap(client, opts)
-
-    -- Format on save
-    -- if client.server_capabilities.documentFormattingProvider then
-    --     local group = vim.api.nvim_create_augroup(
-    --         "FormatOnSave",
-    --         { clear = true }
-    --     )
-    --     vim.api.nvim_create_autocmd("BufWritePre", {
-    --         group = group,
-    --         buffer = buffer,
-    --         callback = function()
-    --             vim.lsp.buf.format({ async = false })
-    --         end,
-    --     })
-    -- end
 end
 
 local config = function()
@@ -25,20 +10,6 @@ local config = function()
             -- prefix = "●",
             spacing = 2,
         },
-        signs = true, -- keep the gutter signs too
-        underline = true, -- underline the problem range
-        update_in_insert = false,
-    })
-
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
-    local servers = {}
-
-    local configure_server = function(server, opts)
-        table.insert(servers, server)
-        vim.lsp.config(server, opts)
-    end
-
-    vim.diagnostic.config({
         signs = {
             text = {
                 [vim.diagnostic.severity.ERROR] = " ",
@@ -47,10 +18,14 @@ local config = function()
                 [vim.diagnostic.severity.INFO]  = "",
             },
         },
+        underline = true, -- underline the problem range
+        update_in_insert = false,
     })
 
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
     -- lua
-    configure_server("lua_ls", {
+    vim.lsp.config("lua_ls", {
         capabilities = capabilities,
         on_attach = on_attach,
         settings = {
@@ -70,14 +45,14 @@ local config = function()
     })
 
     -- C/C++
-    configure_server("clangd", {
+    vim.lsp.config("clangd", {
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "c", "cpp" },
     })
 
     -- Rust
-    configure_server("rust_analyzer", {
+    vim.lsp.config("rust_analyzer", {
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "rust" },
@@ -101,7 +76,7 @@ local config = function()
     })
 
     -- python
-    configure_server("pyright", {
+    vim.lsp.config("pyright", {
         capabilities = capabilities,
         on_attach = on_attach,
         settings = {
@@ -118,29 +93,29 @@ local config = function()
     })
 
     -- json
-    configure_server("jsonls", {
+    vim.lsp.config("jsonls", {
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "json", "jsonc" },
     })
 
     -- java
-    configure_server("jdtls", {
+    vim.lsp.config("jdtls", {
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "java" },
     })
 
     -- typescript
-    configure_server("ts_ls", {
+    vim.lsp.config("ts_ls", {
         on_attach = on_attach,
         capabilities = capabilities,
-        filetypes = { "typescript", "typescriptreact", "typescript.tsx", "css" },
+        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
         root_markers = { "package.json", "tsconfig.json", ".git" },
     })
 
     -- css
-    configure_server("cssls", {
+    vim.lsp.config("cssls", {
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "css", "scss", "less" },
@@ -153,7 +128,7 @@ local config = function()
     })
 
     -- tailwind
-    configure_server("tailwindcss", {
+    vim.lsp.config("tailwindcss", {
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = {
@@ -164,26 +139,24 @@ local config = function()
     })
 
     -- bash
-    configure_server("bashls", {
+    vim.lsp.config("bashls", {
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "sh" },
     })
 
     -- docker
-    configure_server("dockerls", {
+    vim.lsp.config("dockerls", {
         capabilities = capabilities,
         on_attach = on_attach,
     })
 
     -- golang
-    configure_server("gopls", {
+    vim.lsp.config("gopls", {
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "go" },
     })
-
-    vim.lsp.enable(servers)
 end
 
 return {
