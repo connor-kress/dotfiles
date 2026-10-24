@@ -1,25 +1,26 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     lazy = false,
     build = ":TSUpdate",
-    opts = {
-        highlight = {
-            enable = true,
-            additional_vim_regex_highlighting = false,
-        },
-        indent = { enable = true },
-        ensure_installed = {
+    config = function()
+        local treesitter = require("nvim-treesitter")
+        treesitter.setup({})
+        treesitter.install({
             "lua",
             "python",
             "c",
             "cpp",
             "cmake",
+            "go",
             "rust",
             "java",
             "bash",
             "markdown",
+            "markdown_inline",
             "javascript",
             "typescript",
+            "tsx",
             "html",
             "css",
             "yaml",
@@ -27,12 +28,9 @@ return {
             "dockerfile",
             "gitignore",
             "latex",
-        },
-        auto_install = true,
-    },
-    config = function(_, opts)
+        })
+
         -- Use rust highlighting for darlang files
         vim.treesitter.language.register("rust", "darlang")
-        require("nvim-treesitter").setup(opts)
     end,
 }

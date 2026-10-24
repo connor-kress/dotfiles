@@ -10,7 +10,7 @@ return {
                 "jdtls",
                 "pyright",
                 "jsonls",
-                "tsserver",
+                "ts_ls",
                 "cssls",
                 "tailwindcss",
                 "bashls",

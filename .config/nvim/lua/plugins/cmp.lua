@@ -42,6 +42,8 @@ return {
     config = config,
     dependencies = {
         "onsails/lspkind.nvim",
+        "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-path",
         {
             "L3MON4D3/LuaSnip",
             -- follow latest release.

@@ -49,11 +49,16 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
 })
 
-vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+vim.api.nvim_create_autocmd("FileType", {
     callback = function(args)
-        local ok = pcall(vim.treesitter.get_parser, args.buf)
-        if ok then
-            vim.treesitter.start(args.buf)
+        local ok, parser = pcall(vim.treesitter.get_parser, args.buf)
+        if not ok or not parser then
+            return
+        end
+
+        vim.treesitter.start(args.buf)
+        if vim.treesitter.query.get(parser:lang(), "indents") then
+            vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end
     end,
 })
