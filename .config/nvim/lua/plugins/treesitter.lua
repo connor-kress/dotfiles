@@ -9,6 +9,7 @@ return {
         treesitter.install({
             "lua",
             "python",
+            "r",
             "c",
             "cpp",
             "cmake",
@@ -33,5 +34,6 @@ return {
 
         -- Use rust highlighting for darlang files
         vim.treesitter.language.register("rust", "darlang")
+        vim.treesitter.language.register("markdown", "rmd")
     end,
 }
