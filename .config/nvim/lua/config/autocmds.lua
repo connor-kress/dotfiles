@@ -1,5 +1,3 @@
-require("util.functions")
-
 -- Restore buffer-word completion when the last completion server detaches.
 vim.api.nvim_create_autocmd("LspDetach", {
     callback = function(args)
@@ -27,7 +25,7 @@ local small_indent_fts = {
 vim.api.nvim_create_autocmd("BufEnter", {
     callback = function()
         -- print("filetype = " .. vim.bo.filetype)
-        if Contains(small_indent_fts, vim.bo.filetype) then
+        if vim.tbl_contains(small_indent_fts, vim.bo.filetype) then
             vim.opt.tabstop = 2
             vim.opt.shiftwidth = 2
             vim.opt.softtabstop = 2
@@ -47,7 +45,7 @@ local document_fts = {
 vim.api.nvim_create_autocmd("BufEnter", {
     callback = function()
         -- print("filetype = " .. vim.bo.filetype)
-        if Contains(document_fts, vim.bo.filetype) then
+        if vim.tbl_contains(document_fts, vim.bo.filetype) then
             vim.o.spell = true
             vim.o.breakindent = true
             vim.o.breakindentopt = "shift:2"
