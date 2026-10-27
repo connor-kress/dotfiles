@@ -1,5 +1,6 @@
 return {
     "lervag/vimtex",
+    cond = false, -- Temporarily disabled; keep the plugin installed.
     lazy = false,     -- we don't want to lazy load VimTeX
     -- tag = "v2.15", -- uncomment to pin to a specific release
     init = function()
