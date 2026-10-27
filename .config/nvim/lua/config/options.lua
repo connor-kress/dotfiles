@@ -4,6 +4,8 @@ local g = vim.g
 -- Globals
 g.mapleader = " "
 g.maplocalleader = " "
+g.rustfmt_autosave = 1 -- Use Neovim's bundled Rust formatting support.
+g.rustfmt_emit_files = 1 -- Use modern rustfmt flags instead of --write-mode.
 
 -- Tab / Indentation
 opt.tabstop = 4
