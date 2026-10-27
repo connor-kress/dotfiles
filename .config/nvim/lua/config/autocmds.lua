@@ -38,6 +38,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 local document_fts = {
     "markdown",
+    "rmd",
     "tex",
 }
 
