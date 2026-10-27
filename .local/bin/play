@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+python /home/connor/Code/Python/video_manager/play.py $@
