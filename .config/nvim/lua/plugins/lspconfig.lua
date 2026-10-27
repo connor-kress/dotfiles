@@ -13,9 +13,9 @@ local config = function()
         signs = {
             text = {
                 [vim.diagnostic.severity.ERROR] = " ",
-                [vim.diagnostic.severity.WARN]  = " ",
-                [vim.diagnostic.severity.HINT]  = "󰌵 ",
-                [vim.diagnostic.severity.INFO]  = "",
+                [vim.diagnostic.severity.WARN] = " ",
+                [vim.diagnostic.severity.HINT] = "󰌵 ",
+                [vim.diagnostic.severity.INFO] = "",
             },
         },
         underline = true, -- underline the problem range
@@ -117,9 +117,7 @@ local config = function()
         filetypes = { "css", "scss", "less" },
         root_markers = { "package.json", "tailwind.config.ts", ".git" },
         settings = {
-            css = { validate = true,
-                lint = { unknownAtRules = "ignore", },
-            },
+            css = { validate = true, lint = { unknownAtRules = "ignore" } },
         },
     })
 
@@ -127,8 +125,14 @@ local config = function()
     vim.lsp.config("tailwindcss", {
         on_attach = on_attach,
         filetypes = {
-            "html", "css", "javascript", "javascriptreact", "typescript",
-            "typescriptreact", "vue", "svelte"
+            "html",
+            "css",
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "vue",
+            "svelte",
         },
         root_markers = { "package.json", "tailwind.config.ts", ".git" },
     })

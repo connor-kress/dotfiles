@@ -7,10 +7,13 @@ return {
                 show_hidden = true,
                 is_always_hidden = function(name, _)
                     return vim.tbl_contains({
-                        "..", ".git", "node_modules", ".docusaurus"
+                        "..",
+                        ".git",
+                        "node_modules",
+                        ".docusaurus",
                     }, name)
-                end
+                end,
             },
         })
-    end
+    end,
 }

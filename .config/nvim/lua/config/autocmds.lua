@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
             vim.opt.shiftwidth = 4
             vim.opt.softtabstop = 4
         end
-    end
+    end,
 })
 
 local document_fts = {
@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
             vim.o.spell = false
             vim.o.breakindent = false
         end
-    end
+    end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
