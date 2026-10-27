@@ -28,7 +28,10 @@ opt.colorcolumn = ""
 opt.signcolumn = "yes"
 opt.cmdheight = 1
 opt.scrolloff = 10
-opt.completeopt = "menu,menuone,noselect" -- required for nvim-cmp
+opt.completeopt = "menu,menuone,noselect,popup,fuzzy"
+opt.pumborder = ""
+opt.autocomplete = true
+opt.complete = "." -- Words from the current buffer; LSP takes over on attach.
 
 -- Behaviour
 opt.hidden = true

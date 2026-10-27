@@ -1,5 +1,14 @@
 require("util.functions")
 
+-- Restore buffer-word completion when the last completion server detaches.
+vim.api.nvim_create_autocmd("LspDetach", {
+    callback = function(args)
+        vim.schedule(function()
+            require("config.completion").update(args.buf)
+        end)
+    end,
+})
+
 local small_indent_fts = {
     "javascript",
     "typescript",

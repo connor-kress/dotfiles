@@ -1,6 +1,7 @@
 local on_attach = function(client, buffer)
     local opts = { noremap = true, silent = true, buffer = buffer }
     require("config.mappings").set_lsp_keymap(client, opts)
+    require("config.completion").update(buffer)
 end
 
 local config = function()
@@ -22,11 +23,8 @@ local config = function()
         update_in_insert = false,
     })
 
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
     -- lua
     vim.lsp.config("lua_ls", {
-        capabilities = capabilities,
         on_attach = on_attach,
         settings = {
             Lua = {
@@ -46,14 +44,12 @@ local config = function()
 
     -- C/C++
     vim.lsp.config("clangd", {
-        capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "c", "cpp" },
     })
 
     -- Rust
     vim.lsp.config("rust_analyzer", {
-        capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "rust" },
         root_markers = { "Cargo.toml" },
@@ -77,7 +73,6 @@ local config = function()
 
     -- python
     vim.lsp.config("pyright", {
-        capabilities = capabilities,
         on_attach = on_attach,
         settings = {
             pyright = {
@@ -94,14 +89,12 @@ local config = function()
 
     -- json
     vim.lsp.config("jsonls", {
-        capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "json", "jsonc" },
     })
 
     -- java
     vim.lsp.config("jdtls", {
-        capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "java" },
     })
@@ -109,14 +102,12 @@ local config = function()
     -- typescript
     vim.lsp.config("ts_ls", {
         on_attach = on_attach,
-        capabilities = capabilities,
         filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
         root_markers = { "package.json", "tsconfig.json", ".git" },
     })
 
     -- css
     vim.lsp.config("cssls", {
-        capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "css", "scss", "less" },
         root_markers = { "package.json", "tailwind.config.ts", ".git" },
@@ -129,7 +120,6 @@ local config = function()
 
     -- tailwind
     vim.lsp.config("tailwindcss", {
-        capabilities = capabilities,
         on_attach = on_attach,
         filetypes = {
             "html", "css", "javascript", "javascriptreact", "typescript",
@@ -140,20 +130,17 @@ local config = function()
 
     -- bash
     vim.lsp.config("bashls", {
-        capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "sh" },
     })
 
     -- docker
     vim.lsp.config("dockerls", {
-        capabilities = capabilities,
         on_attach = on_attach,
     })
 
     -- golang
     vim.lsp.config("gopls", {
-        capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "go" },
     })
@@ -167,8 +154,5 @@ return {
         "windwp/nvim-autopairs",
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        "hrsh7th/nvim-cmp",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-nvim-lsp",
     },
 }

@@ -27,7 +27,7 @@ local function toggle_breakindent()
     end
 end
 
-map_key("n", "<leader>i", toggle_breakindent, {
+map_key("n", "<leader>ti", toggle_breakindent, {
     desc = "Toggle breakindent",
 })
 
@@ -45,6 +45,24 @@ map_key("n", "<leader>r", ":!Rscript -e \"rmarkdown::render('%')\"<CR>", opts)
 -- Built-in commenting
 nvim_map_key("n", "<C-c>", "gcc", opts_with_remap)
 nvim_map_key("v", "<C-c>", "gcgv", opts_with_remap)
+
+-- Native completion
+map_key("n", "<leader>tc", function()
+    require("config.completion").toggle()
+end, { desc = "Toggle completion" })
+
+map_key("i", "<C-j>", function()
+    return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-j>"
+end, { expr = true })
+map_key("i", "<C-k>", function()
+    return vim.fn.pumvisible() == 1 and "<C-p>" or "<C-k>"
+end, { expr = true })
+map_key("i", "<CR>", function()
+    if vim.fn.pumvisible() == 1 and vim.fn.complete_info({ "selected" }).selected >= 0 then
+        return "<C-y>"
+    end
+    return "<CR>"
+end, { expr = true })
 
 -- Supermaven
 map_key("n", "<leader>sm", ":SupermavenToggle<CR>", {
