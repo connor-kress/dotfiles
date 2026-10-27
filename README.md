@@ -17,7 +17,7 @@ The installer does the following:
 
 - Checks for missing dependencies and conflicting dotfiles or repo paths.
 - Clones `connor-kress/agents-config` into `~/.agents` and `connor-kress/Scripts` into `~/Scripts` if missing. Fresh clones use the latest commit on each remote's default branch, with no version pinning or submodules.
-- Uses GNU Stow to link dotfiles into the home directory, including files under `.config` and `.gnome`. `.stow-local-ignore` excludes Git metadata, this README, `install.py`, `tests/`, Python bytecode, and local application data. Stow keeps its own ignore file out of the target too.
+- Uses GNU Stow to link dotfiles into the home directory, including files under `.config`, `.gnome`, and `.local/bin`. `.stow-local-ignore` excludes Git metadata, this README, `install.py`, `tests/`, Python bytecode, and local application data. Stow keeps its own ignore file out of the target too.
 - Runs `~/.agents/install.py` to install agent instructions using GNU Stow. See the [agent configuration README](https://github.com/connor-kress/agents-config#readme) for package targets and uninstall commands.
 
 Existing checkouts, files, and links are preserved. A conflicting path stops setup so you can move it aside yourself. Existing relative links into this checkout are accepted by Stow, including directory links such as `~/.config/nvim`. Rerunning the installer installs missing links and skips existing checkouts without pulling, switching branches, or resetting local changes.
