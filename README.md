@@ -1,10 +1,10 @@
-# Personal environment
+# Dotfiles
 
-This repo is the starting point for setting up my shell and application configuration. Agent configuration and scripts remain independent Git repos at `~/.agents` and `~/Scripts`.
+Personal shell and application configuration. Agent configuration and scripts live in separate repos, with this repo providing the setup entry point.
 
 ## Setup
 
-Install Git, Python 3.9 or newer, and GNU Stow using your system package manager. GitHub SSH access is required for the clone URLs below and in `install.py`.
+Requires Git, Python 3.9+, GNU Stow, and GitHub SSH access.
 
 ```sh
 git clone git@github.com:connor-kress/dotfiles.git ~/dotfiles
@@ -13,22 +13,23 @@ python install.py --dry-run
 python install.py
 ```
 
-The installer does the following:
+The installer:
 
-- Checks for missing dependencies and conflicting dotfiles or repo paths.
-- Clones `connor-kress/agents-config` into `~/.agents` and `connor-kress/Scripts` into `~/Scripts` if missing. Fresh clones use the latest commit on each remote's default branch, with no version pinning or submodules.
-- Uses GNU Stow to link dotfiles into the home directory, including files under `.config`, `.gnome`, and `.local/bin`. `.stow-local-ignore` excludes Git metadata, this README, `install.py`, `tests/`, Python bytecode, and local application data. Stow keeps its own ignore file out of the target too.
-- Runs `~/.agents/install.py` to install agent instructions using GNU Stow. See the [agent configuration README](https://github.com/connor-kress/agents-config#readme) for package targets and uninstall commands.
+- Uses Stow to link configuration and `.local/bin` commands into your home directory.
+- Clones the latest default branches of [agents-config](https://github.com/connor-kress/agents-config) into `~/.agents` and [Scripts](https://github.com/connor-kress/Scripts) into `~/Scripts` if missing.
+- Runs the [agent instruction installer](https://github.com/connor-kress/agents-config#readme).
 
-Existing checkouts, files, and links are preserved. A conflicting path stops setup so you can move it aside yourself. Existing relative links into this checkout are accepted by Stow, including directory links such as `~/.config/nvim`. Rerunning the installer installs missing links and skips existing checkouts without pulling, switching branches, or resetting local changes.
+Use `--dry-run` to preview setup without cloning or creating links. Existing repos are left untouched on reruns. Conflicting files stop installation without being overwritten.
 
-`--dry-run` does not clone or create links. If the agent repo is missing, it reports the planned clone but cannot check agent instruction conflicts until the repo is available. A normal run checks those conflicts after cloning and before creating dotfile links. Clones remain in place if a later step fails, so rerunning can resume setup.
+Applications and script dependencies must be installed separately. Some configuration contains machine-specific paths.
 
-Keep the dotfiles checkout in place after installation because the installed links point into it. Stow includes untracked files unless `.stow-local-ignore` excludes them; it does not read `.gitignore`. Add new configuration to Git for use on other machines, and add local-only files to both ignore lists as needed. `--no-folding` keeps new target directories as real directories and links individual files.
+`.gnome/keybinds.toml` documents personal shortcuts; linking it does not apply GNOME settings. Configure those manually in GNOME Settings.
+
+Keep this checkout in place; installed links point into it. Stow includes untracked files and uses `.stow-local-ignore`, not `.gitignore`, for exclusions.
 
 ## Updates
 
-Update each repo independently when ready:
+Update each repo independently when ready, then rerun the installer to link any new configuration:
 
 ```sh
 git -C ~/dotfiles pull --ff-only
@@ -36,6 +37,3 @@ git -C ~/.agents pull --ff-only
 git -C ~/Scripts pull --ff-only
 python ~/dotfiles/install.py
 ```
-
-The installer installs configuration, not applications or script-specific dependencies. Some configuration contains machine-specific paths. `.gnome/keybinds.toml` documents shortcuts; linking it does not apply GNOME settings.
-
