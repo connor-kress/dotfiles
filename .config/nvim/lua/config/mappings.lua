@@ -32,7 +32,6 @@ map_key("n", "<leader>ti", toggle_breakindent, {
 })
 
 -- Latex Compile
--- This is already provided by the vimtex plugin but is less consistent
 map_key("n", "<leader>l", ":!pdflatex -output-directory=build %<CR>", opts)
 
 -- Make Compile

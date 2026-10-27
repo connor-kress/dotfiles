@@ -6,8 +6,7 @@ end
 
 local config = function()
     vim.diagnostic.config({
-        virtual_text = { -- turn on inline text
-            -- prefix = "●",
+        virtual_text = {
             spacing = 2,
         },
         signs = {
@@ -18,8 +17,6 @@ local config = function()
                 [vim.diagnostic.severity.INFO] = "",
             },
         },
-        underline = true, -- underline the problem range
-        update_in_insert = false,
     })
 
     -- lua
@@ -57,7 +54,7 @@ local config = function()
                 cargo = {
                     allFeatures = true,
                 },
-                checkOnSave = {
+                check = {
                     command = "clippy",
                 },
                 diagnostics = {
