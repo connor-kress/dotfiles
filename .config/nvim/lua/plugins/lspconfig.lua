@@ -71,11 +71,17 @@ local config = function()
     })
 
     -- python
+    local pyright_on_attach = vim.lsp.config.pyright.on_attach
     vim.lsp.config("pyright", {
-        on_attach = on_attach,
+        on_attach = function(client, buffer)
+            pyright_on_attach(client, buffer)
+            on_attach(client, buffer)
+        end,
         settings = {
             pyright = {
                 disableOrganizeImports = false,
+            },
+            python = {
                 analysis = {
                     useLibraryCodeForTypes = true,
                     autoSearchPaths = true,

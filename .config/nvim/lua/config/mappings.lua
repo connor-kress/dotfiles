@@ -94,7 +94,7 @@ M.set_lsp_keymap = function(client, lsp_opts)
         vim.diagnostic.jump({ count = 1, float = true })
     end, lsp_opts)
     if client.name == "pyright" then
-        map_key("n", "<Leader>oi", ":PyrightOrganizeImports<CR>", lsp_opts)
+        map_key("n", "<leader>oi", "<cmd>LspPyrightOrganizeImports<CR>", lsp_opts)
     end
 end
 
