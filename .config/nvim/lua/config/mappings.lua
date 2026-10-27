@@ -19,11 +19,11 @@ map_key("v", ">", ">gv", opts)
 map_key("v", "<", "<gv", opts)
 
 local function toggle_breakindent()
-    if vim.o.breakindent then
-        vim.o.breakindent = false
+    if vim.wo.breakindent then
+        vim.opt_local.breakindent = false
     else
-        vim.o.breakindent = true
-        vim.o.breakindentopt = "shift:2"
+        vim.opt_local.breakindent = true
+        vim.opt_local.breakindentopt = "shift:2"
     end
 end
 

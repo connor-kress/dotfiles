@@ -22,17 +22,16 @@ local small_indent_fts = {
     "tex",
 }
 
-vim.api.nvim_create_autocmd("BufEnter", {
-    callback = function()
-        -- print("filetype = " .. vim.bo.filetype)
-        if vim.tbl_contains(small_indent_fts, vim.bo.filetype) then
-            vim.opt.tabstop = 2
-            vim.opt.shiftwidth = 2
-            vim.opt.softtabstop = 2
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function(args)
+        if vim.tbl_contains(small_indent_fts, vim.bo[args.buf].filetype) then
+            vim.bo[args.buf].tabstop = 2
+            vim.bo[args.buf].shiftwidth = 2
+            vim.bo[args.buf].softtabstop = 2
         else
-            vim.opt.tabstop = 4
-            vim.opt.shiftwidth = 4
-            vim.opt.softtabstop = 4
+            vim.bo[args.buf].tabstop = 4
+            vim.bo[args.buf].shiftwidth = 4
+            vim.bo[args.buf].softtabstop = 4
         end
     end,
 })
@@ -42,16 +41,15 @@ local document_fts = {
     "tex",
 }
 
-vim.api.nvim_create_autocmd("BufEnter", {
-    callback = function()
-        -- print("filetype = " .. vim.bo.filetype)
-        if vim.tbl_contains(document_fts, vim.bo.filetype) then
-            vim.o.spell = true
-            vim.o.breakindent = true
-            vim.o.breakindentopt = "shift:2"
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function(args)
+        if vim.tbl_contains(document_fts, vim.bo[args.buf].filetype) then
+            vim.opt_local.spell = true
+            vim.opt_local.breakindent = true
+            vim.opt_local.breakindentopt = "shift:2"
         else
-            vim.o.spell = false
-            vim.o.breakindent = false
+            vim.opt_local.spell = false
+            vim.opt_local.breakindent = false
         end
     end,
 })
