@@ -83,6 +83,12 @@ alacritty -e bash -c 'EDITOR="/usr/bin/nvim" yazi'
 """
 shortcut = "<Ctrl><Alt>k"
 
+
+[[keybinds.custom]]
+name = "Open Wlctl"
+command = """alacritty -e /home/connor/.cargo/bin/wlctl"""
+shortcut = "<Ctrl><Alt>i"
+
 [[keybinds.custom]]
 name = "Open Notes File"
 command = """
