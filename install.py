@@ -1,6 +1,7 @@
 """Install personal configuration without replacing existing files."""
 
 import argparse
+import os
 from pathlib import Path
 import shutil
 import subprocess
@@ -45,6 +46,14 @@ def check_repositories(home: Path) -> bool:
     return valid
 
 
+def running_gnome() -> bool:
+    desktop = os.environ.get("XDG_CURRENT_DESKTOP", "")
+    if desktop:
+        return "gnome" in desktop.lower().split(":")
+    session = os.environ.get("XDG_SESSION_DESKTOP") or os.environ.get("DESKTOP_SESSION", "")
+    return session.lower() == "gnome" or session.lower().startswith("gnome-")
+
+
 def install(home: Path, *, dry_run: bool) -> int:
     for command in ("git", "stow"):
         if shutil.which(command) is None:
@@ -63,6 +72,20 @@ def install(home: Path, *, dry_run: bool) -> int:
     if run_install_command([*stow_command, "--simulate"], check=False):
         say("Resolve the Stow conflicts and rerun install.py. No changes made.")
         return 1
+
+    keybinds_command = None
+    if running_gnome():
+        if sys.version_info < (3, 11):
+            say("GNOME shortcuts require Python 3.11+. Rerun install.py with a newer Python.")
+            return 1
+        if shutil.which("gsettings") is None:
+            say("Missing dependency: gsettings. Install it and rerun install.py.")
+            return 1
+        keybinds_command = [sys.executable, str(ROOT / ".gnome" / "apply_keybinds.py")]
+        say("Checking GNOME custom shortcuts...")
+        run_install_command([*keybinds_command, "--dry-run"])
+    else:
+        say("Skipping GNOME shortcuts: no GNOME session detected.")
 
     for name, url in REPOSITORIES.items():
         destination = home / name
@@ -86,13 +109,18 @@ def install(home: Path, *, dry_run: bool) -> int:
     if not dry_run:
         run_install_command(stow_command)
         run_install_command([sys.executable, str(agent_installer)])
+        if keybinds_command:
+            say("")
+            say("Applying GNOME custom shortcuts...")
+            run_install_command(keybinds_command)
+    say("")
     say("Dry run complete. No changes made." if dry_run else "Installation complete.")
     return 0
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--dry-run", action="store_true", help="preview without cloning or linking")
+    parser.add_argument("--dry-run", action="store_true", help="preview without changing files or settings")
     args = parser.parse_args()
     try:
         return install(Path.home(), dry_run=args.dry_run)

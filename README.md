@@ -19,11 +19,11 @@ The installer:
 - Clones the latest default branches of [agents-config](https://github.com/connor-kress/agents-config) into `~/.agents` and [Scripts](https://github.com/connor-kress/Scripts) into `~/Scripts` if missing.
 - Runs the [agent instruction installer](https://github.com/connor-kress/agents-config#readme).
 
-Use `--dry-run` to preview setup without cloning or creating links. Existing repos are left untouched on reruns. Conflicting files stop installation without being overwritten.
+Use `--dry-run` to preview setup without changing files or settings. Existing repos are left untouched on reruns. Conflicting files stop installation without being overwritten.
 
 Applications and script dependencies must be installed separately. Some configuration contains machine-specific paths.
 
-`.gnome/keybinds.toml` documents personal shortcuts; linking it does not apply GNOME settings. Configure those manually in GNOME Settings.
+In a GNOME session, the installer also applies `.gnome/keybinds.toml`; other desktops skip this step. Requires Python 3.11+ and `gsettings`. Shortcuts are matched by name, and unlisted shortcuts are preserved. To apply them separately, run `python .gnome/apply_keybinds.py`, optionally with `--dry-run`.
 
 Keep this checkout in place; installed links point into it. Stow includes untracked files and uses `.stow-local-ignore`, not `.gitignore`, for exclusions.
 
