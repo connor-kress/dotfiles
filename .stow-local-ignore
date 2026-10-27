@@ -1,0 +1,19 @@
+# A local list replaces Stow's default ignores.
+\.git
+\.gitignore
+\.gitmodules
+^/README.*
+^/LICENSE.*
+^/COPYING
+^/install\.py$
+^/tests$
+__pycache__
+.+\.py[co]
+.+\.bak
+.+~
+\#.*\#
+
+# Local application data also excluded by the application .gitignore files.
+^/\.config/cmus/(playlists|autosave|cache|command-history|lib\.pl|search-history)$
+^/\.config/newsboat/urls$
+^/\.config/nvim/(lazy-lock\.json|spell)$
