@@ -86,7 +86,9 @@ shortcut = "<Ctrl><Alt>k"
 
 [[keybinds.custom]]
 name = "Open Wlctl"
-command = """alacritty -e /home/connor/.cargo/bin/wlctl"""
+command = """
+alacritty -e bash -c '/home/connor/.cargo/bin/wlctl || read -r -s -n 1 -p "Press any key to close..."'
+"""
 shortcut = "<Ctrl><Alt>i"
 
 [[keybinds.custom]]
