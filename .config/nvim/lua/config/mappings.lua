@@ -42,7 +42,7 @@ map_key("n", "<leader>m", ":!make<CR>", opts)
 -- R Markdown Compile
 map_key("n", "<leader>r", ":!Rscript -e \"rmarkdown::render('%')\"<CR>", opts)
 
--- Comments (comment.nvim)
+-- Built-in commenting
 nvim_map_key("n", "<C-c>", "gcc", opts_with_remap)
 nvim_map_key("v", "<C-c>", "gcgv", opts_with_remap)
 
