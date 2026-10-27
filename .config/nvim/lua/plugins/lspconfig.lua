@@ -156,7 +156,6 @@ return {
     config = config,
     lazy = false,
     dependencies = {
-        "windwp/nvim-autopairs",
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
     },
