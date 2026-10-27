@@ -53,7 +53,7 @@ local config = function()
         filetypes = { "rust" },
         root_markers = { "Cargo.toml" },
         settings = {
-            [ "rust_analyzer" ] = {
+            ["rust-analyzer"] = {
                 cargo = {
                     allFeatures = true,
                 },
