@@ -5,7 +5,6 @@ local on_attach = function(client, buffer)
 end
 
 local config = function()
-    require("neoconf").setup({})
     vim.diagnostic.config({
         virtual_text = { -- turn on inline text
             -- prefix = "●",
