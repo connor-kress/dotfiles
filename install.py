@@ -18,6 +18,17 @@ def say(message: str) -> None:
     print(message, flush=True)
 
 
+def run_install_command(command: list[str], *, check: bool = True) -> int:
+    result = subprocess.run(command, stderr=subprocess.PIPE, text=True)
+    for line in result.stderr.splitlines(keepends=True):
+        if line.rstrip("\r\n") != "WARNING: in simulation mode so not modifying filesystem.":
+            sys.stderr.write(line)
+    sys.stderr.flush()
+    if check:
+        result.check_returncode()
+    return result.returncode
+
+
 def check_repositories(home: Path) -> bool:
     valid = True
     for name in REPOSITORIES:
@@ -49,7 +60,7 @@ def install(home: Path, *, dry_run: bool) -> int:
         f"--dir={ROOT}", f"--target={home}", "--stow", ".",
     ]
     # Let Stow check every dotfile conflict before cloning or linking anything.
-    if subprocess.run([*stow_command, "--simulate"]).returncode:
+    if run_install_command([*stow_command, "--simulate"], check=False):
         say("Resolve the Stow conflicts and rerun install.py. No changes made.")
         return 1
 
@@ -65,7 +76,7 @@ def install(home: Path, *, dry_run: bool) -> int:
     agent_installer = home / ".agents" / "install.py"
     if agent_installer.is_file():
         # Check agent instruction conflicts before installing any dotfile links.
-        subprocess.run([sys.executable, str(agent_installer), "--dry-run"], check=True)
+        run_install_command([sys.executable, str(agent_installer), "--dry-run"])
     elif not dry_run or (home / ".agents").exists():
         say(f"Missing agent installer: {agent_installer}")
         return 1
@@ -73,8 +84,8 @@ def install(home: Path, *, dry_run: bool) -> int:
         say("Would run ~/.agents/install.py after cloning; its conflicts cannot be checked yet.")
 
     if not dry_run:
-        subprocess.run(stow_command, check=True)
-        subprocess.run([sys.executable, str(agent_installer)], check=True)
+        run_install_command(stow_command)
+        run_install_command([sys.executable, str(agent_installer)])
     say("Dry run complete. No changes made." if dry_run else "Installation complete.")
     return 0
 
