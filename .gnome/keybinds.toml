@@ -130,6 +130,11 @@ name = "Play/Pause Music"
 command = '''playerctl play-pause'''
 shortcut = "<Ctrl>space"
 
+[[keybinds.custom]]
+name = "Dismiss Current Notification"
+command = "/home/connor/.local/bin/dismiss-notification"
+shortcut = "<Super><Shift>n"
+
 # [[keybinds.custom]]
 # name = "Search with ytfzf"
 # command = '''alacritty -e ytfzf'''
