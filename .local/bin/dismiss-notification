@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Remove only the visible GNOME notification, including its history entry.
+set -euo pipefail
+
+if [[ $# -gt 0 ]]; then
+    if [[ $# -eq 1 && ( $1 == --help || $1 == -h ) ]]; then
+        echo 'Usage: dismiss-notification'
+        echo 'Dismiss the visible GNOME notification and remove it from history.'
+        echo 'Does nothing if no banner is visible. Requires dismiss-notification@local.'
+        exit 0
+    fi
+    echo 'Usage: dismiss-notification' >&2
+    exit 2
+fi
+
+if ! command -v gdbus >/dev/null 2>&1; then
+    echo 'dismiss-notification: gdbus is required.' >&2
+    exit 1
+fi
+
+if ! gdbus call --session --timeout 5 \
+    --dest org.gnome.Shell \
+    --object-path /org/gnome/Shell/Extensions/DismissNotification \
+    --method org.gnome.Shell.Extensions.DismissNotification.Dismiss >/dev/null; then
+    echo 'dismiss-notification: check that dismiss-notification@local is enabled; log out and back in after first installing it.' >&2
+    exit 1
+fi

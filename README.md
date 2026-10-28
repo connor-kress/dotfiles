@@ -27,6 +27,10 @@ In a GNOME session, the installer also applies `.gnome/keybinds.toml`; other des
 
 Keep this checkout in place; installed links point into it. Stow includes untracked files and uses `.stow-local-ignore`, not `.gitignore`, for exclusions.
 
+## Dismiss notifications
+
+On GNOME Shell 50, `dismiss-notification` removes the visible banner and its history entry. After first installation, log out and back in, then rerun `install.py` to enable the extension.
+
 ## Updates
 
 Update each repo independently when ready, then rerun the installer to link any new configuration:

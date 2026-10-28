@@ -1,0 +1,7 @@
+{
+    "uuid": "dismiss-notification@local",
+    "name": "Dismiss current notification",
+    "description": "Expose a D-Bus command to dismiss the visible notification and remove it from history.",
+    "shell-version": ["50"],
+    "version": 1
+}

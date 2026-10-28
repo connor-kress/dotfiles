@@ -13,6 +13,7 @@ REPOSITORIES = {
     ".agents": "git@github.com:connor-kress/agents-config.git",
     "Scripts": "git@github.com:connor-kress/Scripts.git",
 }
+NOTIFICATION_EXTENSION = "dismiss-notification@local"
 
 
 def say(message: str) -> None:
@@ -54,6 +55,22 @@ def running_gnome() -> bool:
     return session.lower() == "gnome" or session.lower().startswith("gnome-")
 
 
+def enable_notification_extension(*, dry_run: bool) -> None:
+    result = subprocess.run(
+        ["gnome-extensions", "list"],
+        check=True, capture_output=True, text=True,
+    )
+    if NOTIFICATION_EXTENSION not in result.stdout.splitlines():
+        say("GNOME must discover the notification extension: log out and back in, then rerun install.py.")
+        return
+    if dry_run:
+        say(f"Would enable GNOME extension: {NOTIFICATION_EXTENSION}")
+        return
+    run_install_command(["gnome-extensions", "enable", NOTIFICATION_EXTENSION])
+    run_install_command(["gsettings", "set", "org.gnome.shell", "disable-user-extensions", "false"])
+    say(f"Enabled GNOME extension: {NOTIFICATION_EXTENSION}")
+
+
 def install(home: Path, *, dry_run: bool) -> int:
     for command in ("git", "stow"):
         if shutil.which(command) is None:
@@ -78,14 +95,15 @@ def install(home: Path, *, dry_run: bool) -> int:
         if sys.version_info < (3, 11):
             say("GNOME shortcuts require Python 3.11+. Rerun install.py with a newer Python.")
             return 1
-        if shutil.which("gsettings") is None:
-            say("Missing dependency: gsettings. Install it and rerun install.py.")
-            return 1
+        for command in ("gsettings", "gnome-extensions", "gdbus"):
+            if shutil.which(command) is None:
+                say(f"Missing dependency: {command}. Install it and rerun install.py.")
+                return 1
         keybinds_command = [sys.executable, str(ROOT / ".gnome" / "apply_keybinds.py")]
         say("Checking GNOME custom shortcuts...")
         run_install_command([*keybinds_command, "--dry-run"])
     else:
-        say("Skipping GNOME shortcuts: no GNOME session detected.")
+        say("Skipping GNOME shortcuts and extensions: no GNOME session detected.")
 
     for name, url in REPOSITORIES.items():
         destination = home / name
@@ -113,6 +131,8 @@ def install(home: Path, *, dry_run: bool) -> int:
             say("")
             say("Applying GNOME custom shortcuts...")
             run_install_command(keybinds_command)
+    if keybinds_command:
+        enable_notification_extension(dry_run=dry_run)
     say("")
     say("Dry run complete. No changes made." if dry_run else "Installation complete.")
     return 0
