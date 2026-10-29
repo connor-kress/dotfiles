@@ -1,4 +1,4 @@
 #!/bin/sh
 
 export T3CODE_HOME="$HOME/.t3-desktop"
-exec "$HOME/Software/T3-Code-0.1.3-x86_64.AppImage" "$@"
+exec "$HOME/Software/T3-Code-0.1.5-x86_64.AppImage" "$@"
