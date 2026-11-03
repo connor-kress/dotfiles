@@ -76,6 +76,11 @@ alacritty -e bash -c 'EDITOR="/usr/bin/nvim" yazi'
 '''
 shortcut = "<Ctrl><Alt>k"
 
+[[keybinds.custom]]
+name = "Open Nvim Buffer"
+command = '''alacritty -e nvim'''
+shortcut = "<Ctrl><Alt>z"
+
 
 [[keybinds.custom]]
 name = "Open Wlctl"
