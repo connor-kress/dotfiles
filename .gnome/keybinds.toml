@@ -131,6 +131,11 @@ command = '''playerctl play-pause'''
 shortcut = "<Ctrl>space"
 
 [[keybinds.custom]]
+name = "Toggle Whisrs"
+command = "/home/connor/.cargo/bin/whisrs toggle"
+shortcut = "<Alt>space"
+
+[[keybinds.custom]]
 name = "Dismiss Current Notification"
 command = "/home/connor/.local/bin/dismiss-notification"
 shortcut = "<Super><Shift>n"
