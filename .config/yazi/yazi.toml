@@ -1,0 +1,4 @@
+[opener]
+open = [
+	{ run = "xdg-open %s1", desc = "Open", for = "linux", orphan = true },
+]
