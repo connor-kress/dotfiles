@@ -7,6 +7,8 @@
 	helper = cache --timeout=604800
 [init]
 	defaultBranch = main
+[core]
+	pager = less --mouse -R
 [commit]
 	gpgsign = true
 [fetch]
