@@ -112,21 +112,21 @@ shortcut = "<Ctrl><Alt>w"
 [[keybinds.custom]]
 name = "pass: Copy Password"
 command = '''
-alacritty -e bash -c 'pass -c $(cd .password-store && fd | grep "\.gpg$" | sed "s/\.gpg$//" | fzf) || read'
+alacritty -e bash -c 'pass -c $(cd .password-store && fd | grep "\.gpg$" | sed "s/\.gpg$//" | /home/connor/.local/bin/fzf-vim) || read'
 '''
 shortcut = "<Ctrl><Alt>y"
 
 [[keybinds.custom]]
 name = "pass: Copy OTP"
 command = '''
-alacritty -e bash -c 'pass otp -c $(cd .password-store && fd | grep "\.gpg$" | sed "s/\.gpg$//" | fzf) || read'
+alacritty -e bash -c 'pass otp -c $(cd .password-store && fd | grep "\.gpg$" | sed "s/\.gpg$//" | /home/connor/.local/bin/fzf-vim) || read'
 '''
 shortcut = "<Shift><Ctrl><Alt>y"
 
 [[keybinds.custom]]
 name = "pass: Display Password"
 command = '''
-alacritty -e bash -c 'cd .password-store && fd -e gpg | sed "s/\.gpg$//" | fzf | xargs -r -I{} bash -c "pass \"{}\" | nvim -R -"'
+alacritty -e bash -c 'cd .password-store && fd -e gpg | sed "s/\.gpg$//" | /home/connor/.local/bin/fzf-vim | xargs -r -I{} bash -c "pass \"{}\" | nvim -R -"'
 '''
 shortcut = "<Shift><Ctrl>y"
 
@@ -153,6 +153,6 @@ shortcut = "<Super><Shift>n"
 [[keybinds.custom]]
 name = "Tmux Sessionizer"
 command = '''
-alacritty -e bash -c '~/Scripts/Tmux/$(for f in ~/Scripts/Tmux/*.sh; do basename "${f%.sh}"; done | fzf).sh'
+alacritty -e bash -c '~/Scripts/Tmux/$(for f in ~/Scripts/Tmux/*.sh; do basename "${f%.sh}"; done | /home/connor/.local/bin/fzf-vim).sh'
 '''
 shortcut = "<Ctrl><Alt>s"
