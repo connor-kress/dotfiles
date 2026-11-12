@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+exec fzf --layout=reverse \
+  --bind 'j:down,k:up,g:first,G:last' \
+  --bind 'start:unbind(j,k,g,G,i,a,I,A,S)' \
+  --bind 'esc:rebind(j,k,g,G,i,a,I,A,S)' \
+  --bind 'i:unbind(j,k,g,G,i,a,I,A,S)' \
+  --bind 'a:forward-char+unbind(j,k,g,G,i,a,I,A,S)' \
+  --bind 'I:beginning-of-line+unbind(j,k,g,G,i,a,I,A,S)' \
+  --bind 'A:end-of-line+unbind(j,k,g,G,i,a,I,A,S)' \
+  --bind 'S:clear-query+unbind(j,k,g,G,i,a,I,A,S)' \
+  "$@"
