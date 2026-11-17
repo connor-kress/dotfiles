@@ -12,6 +12,7 @@ export PATH
 
 export EDITOR=nvim
 export VISUAL=nvim
+export NVIM_DISABLE_SUPERMAVEN=1
 
 case $- in
     *i*) ;;
