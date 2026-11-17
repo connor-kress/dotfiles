@@ -61,6 +61,15 @@ local config = function()
                 cargo = {
                     allFeatures = true,
                 },
+                checkOnSave = {
+                    command = "clippy",
+                },
+                diagnostics = {
+                    enable = true,
+                    experimental = {
+                        enable = true,
+                    },
+                },
             },
         },
     })
