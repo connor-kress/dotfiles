@@ -1,0 +1,15 @@
+[user]
+	name = Connor Kress
+	email = connor@ckress.dev
+	signingkey = ~/.ssh/id_ed25519.pub
+
+[gpg]
+	format = ssh
+[init]
+	defaultBranch = main
+[core]
+	pager = less --mouse -R
+[commit]
+	gpgsign = true
+[fetch]
+	prune = true

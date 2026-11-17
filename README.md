@@ -9,21 +9,30 @@ Requires Git, Python 3.9+, GNU Stow, and GitHub SSH access.
 ```sh
 git clone git@github.com:connor-kress/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-python install.py --dry-run
-python install.py
+python install.py --profile=desktop --dry-run
+python install.py --profile=desktop
 ```
 
 The installer:
 
-- Uses Stow to link configuration and `.local/bin` commands into your home directory.
-- Clones the latest default branches of [agents-config](https://github.com/connor-kress/agents-config) into `~/.agents` and [Scripts](https://github.com/connor-kress/Scripts) into `~/Scripts` if missing.
+- Uses Stow to link the profile's configuration into your home directory.
+- Clones the profile's repos if missing: [agents-config](https://github.com/connor-kress/agents-config) into `~/.agents` and, for `desktop`, [Scripts](https://github.com/connor-kress/Scripts) into `~/Scripts`.
 - Runs the [agent instruction installer](https://github.com/connor-kress/agents-config#readme).
+
+## Profiles
+
+Profiles are defined in `PROFILES` in `install.py`. `--profile` is required.
+
+- `desktop` links everything at the repo root and applies GNOME settings.
+- `server` links `profiles/server/` (Bash, Git, and systemd user environment) plus the root paths listed in its `shared_paths`. Its `.bashrc` sets `PATH` before the interactive check so non-interactive SSH commands find user-installed tools.
+
+To share another root config with a profile, add its path to that profile's `shared_paths`. Profile-only files go in `profiles/<name>/` and cannot overlap shared paths.
 
 Use `--dry-run` to preview setup without changing files or settings. Existing repos are left untouched on reruns. Conflicting files stop installation without being overwritten.
 
 Applications and script dependencies must be installed separately. Some configuration contains machine-specific paths.
 
-In a GNOME session, the installer also applies `.gnome/keybinds.toml`; other desktops skip this step. Requires Python 3.11+ and `gsettings`. Shortcuts are matched by name, and unlisted shortcuts are preserved. To apply them separately, run `python .gnome/apply_keybinds.py`, optionally with `--dry-run`.
+In a GNOME session, the `desktop` profile also applies `.gnome/keybinds.toml`; other desktops skip this step. Requires Python 3.11+ and `gsettings`. Shortcuts are matched by name, and unlisted shortcuts are preserved. To apply them separately, run `python .gnome/apply_keybinds.py`, optionally with `--dry-run`.
 
 Keep this checkout in place; installed links point into it. Stow includes untracked files and uses `.stow-local-ignore`, not `.gitignore`, for exclusions.
 
@@ -39,5 +48,5 @@ Update each repo independently when ready, then rerun the installer to link any 
 git -C ~/dotfiles pull --ff-only
 git -C ~/.agents pull --ff-only
 git -C ~/Scripts pull --ff-only
-python ~/dotfiles/install.py
+python ~/dotfiles/install.py --profile=<name>
 ```

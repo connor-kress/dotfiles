@@ -6,6 +6,7 @@
 ^/LICENSE.*
 ^/COPYING
 ^/install\.py$
+^/profiles$
 ^/tests$
 __pycache__
 .+\.py[co]
