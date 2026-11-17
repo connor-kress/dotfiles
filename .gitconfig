@@ -1,8 +1,10 @@
 [user]
 	name = Connor Kress
 	email = connor@ckress.dev
-	signingkey = EB2736E78BD99C62
+	signingkey = ~/.ssh/id_ed25519.pub
 
+[gpg]
+	format = ssh
 [credential]
 	helper = cache --timeout=604800
 [init]
