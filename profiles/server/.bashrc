@@ -1,7 +1,7 @@
 # Runs for non-interactive SSH commands too, so agents get the same PATH.
 # Keep in sync with .config/environment.d/10-path.conf.
 export PNPM_HOME="$HOME/.local/share/pnpm"
-for dir in "$PNPM_HOME" "$HOME/.cargo/bin" "$HOME/go/bin" "$HOME/.local/bin"; do
+for dir in "$PNPM_HOME/bin" "$HOME/.pulumi/bin" "$HOME/.cargo/bin" "$HOME/go/bin" "$HOME/.local/bin"; do
     case ":$PATH:" in
         *":$dir:"*) ;;
         *) PATH="$dir:$PATH" ;;
