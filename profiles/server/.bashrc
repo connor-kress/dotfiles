@@ -39,6 +39,16 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias ll='ls -lah'
 
+# The desktop's agent-server-aws-sso.service forwards this port, so the
+# browser's SSO redirect reaches the CLI on this server.
+aws() {
+    if [ "${1-}" = sso ] && [ "${2-}" = login ]; then
+        command aws "$@" --no-browser --redirect-port 47823
+    else
+        command aws "$@"
+    fi
+}
+
 # Git aliases matching the oh-my-zsh git plugin.
 git_main_branch() {
     local ref

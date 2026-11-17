@@ -1,0 +1,12 @@
+[Unit]
+Description=Forward AWS SSO login callbacks to agent-server
+After=network-online.target
+
+[Service]
+# Port must match the aws() wrapper in profiles/server/.bashrc.
+ExecStart=/usr/bin/ssh -N -o BatchMode=yes -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -L 127.0.0.1:47823:127.0.0.1:47823 agent-server
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

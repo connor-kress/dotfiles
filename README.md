@@ -26,6 +26,8 @@ Profiles are defined in `PROFILES` in `install.py`. `--profile` is required.
 - `desktop` links everything at the repo root and applies GNOME settings.
 - `server` links `profiles/server/` (Bash, Git, and systemd user environment) plus the root paths listed in its `shared_paths`. Its `.bashrc` sets `PATH` before the interactive check so non-interactive SSH commands find user-installed tools.
 
+On the server, `aws sso login` listens for the browser callback on port 47823. The desktop's `agent-server-aws-sso.service` forwards that port over SSH, so the login link can be opened on the desktop. Enable it once with `systemctl --user enable --now agent-server-aws-sso.service`.
+
 To share another root config with a profile, add its path to that profile's `shared_paths`. Profile-only files go in `profiles/<name>/` and cannot overlap shared paths.
 
 Use `--dry-run` to preview setup without changing files or settings. Existing repos are left untouched on reruns. Conflicting files stop installation without being overwritten.
