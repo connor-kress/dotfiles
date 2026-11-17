@@ -38,4 +38,8 @@ opt.splitright = true
 opt.splitbelow = true
 opt.iskeyword:append("-")
 opt.mouse:append("a")
+if vim.env.SSH_CONNECTION then
+    -- Read and write the connecting terminal's clipboard over SSH.
+    g.clipboard = "osc52"
+end
 opt.clipboard:append("unnamedplus")
